@@ -3,6 +3,7 @@ package org.plateer.fittingroomclient.common.security;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import lombok.extern.log4j.Log4j2;
+import org.plateer.fittingroomclient.common.security.dto.TokensDTO;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
@@ -73,5 +74,12 @@ public class JWTUtil {
                 .getBody();
 
         return claim;
+    }
+
+    public TokensDTO generateTokens(String username) {
+        String access = generateToken(Map.of("memberId", username), 2);
+        String refresh = generateToken(Map.of("memberId", username), 30);
+
+        return new TokensDTO(access, refresh);
     }
 }
