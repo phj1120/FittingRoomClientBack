@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.plateer.fittingroomclient.product.mapper.ProductMapper">
+    <select id="getRoomProductList" resultType="ProductDTO">
+        SELECT
+            DISTINCT
+            A.pm_no,
+            A.se_no,
+            A.se_name,
+            A.se_manager,
+            A.se_status,
+            B.pr_no,
+            B.pr_brand,
+            B.pr_name,
+            B.pr_status,
+            (
+                SELECT
+                    D.prf_uuid
+                FROM
+                    tbl_product_file D
+                WHERE
+                    D.pr_no = B.pr_no
+                ORDER BY
+                    D.prf_status DESC
+                LIMIT
+                    1
+            ) AS prf_uuid
+        FROM
+            tbl_seller A
+            LEFT JOIN tbl_product B ON A.se_no = B.se_no
+            LEFT JOIN tbl_product_file C ON B.pr_no = C.pr_no
+        WHERE
+                B.pr_status NOT IN ( 'INACTIVE', 'DELETE' )
+            AND C.prf_type = 'TOP'
+            AND A.pm_no = #{ pmNo }
+        ORDER BY
+            A.se_no
+    </select>
+</mapper>

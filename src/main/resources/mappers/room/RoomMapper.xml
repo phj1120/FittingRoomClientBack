@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.plateer.fittingroomclient.room.mapper.RoomMapper">
+    <select id="getRoomList" resultType="RoomDTO">
+        SELECT
+            A.pm_no,
+            A.pm_status,
+            B.ro_no,
+            B.ro_name,
+            B.ro_address,
+            B.ro_detail_address,
+            B.ro_postcode,
+            C.se_no,
+            C.se_name,
+            C.se_manager,
+            C.se_phone,
+            C.se_address,
+            C.se_status
+        FROM
+            tbl_place_member A
+            LEFT JOIN tbl_room B ON A.ro_no = B.ro_no
+            LEFT JOIN tbl_seller C ON A.pm_no = C.pm_no
+        WHERE
+            C.se_status NOT IN ( '폐업', '탈퇴', '거부' )
+            AND A.pm_status NOT IN ( '폐업', '탈퇴' )
+    </select>
+</mapper>
