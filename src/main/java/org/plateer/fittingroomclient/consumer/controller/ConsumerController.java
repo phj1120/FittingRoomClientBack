@@ -4,10 +4,8 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.plateer.fittingroomclient.common.dto.ResultDTO;
 import org.plateer.fittingroomclient.common.security.dto.CustomUserDetail;
-import org.plateer.fittingroomclient.consumer.dto.ConsumerDTO;
 import org.plateer.fittingroomclient.consumer.dto.request.ModifyConsumerRequestDTO;
 import org.plateer.fittingroomclient.consumer.service.ConsumerService;
-import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -23,13 +21,12 @@ import javax.validation.Valid;
 public class ConsumerController {
     private final ConsumerService consumerService;
 
-    @PreAuthorize("hasRole('consumer')")  // TODO 본인의 정보만 수정 가능하도록 수정 필요
-    @PutMapping
-    public ResultDTO<Long> modifyConsumerDTO(
+//    @PreAuthorize("hasRole('consumer')")  // TODO 본인의 정보만 수정 가능하도록 수정 필요
+    @PutMapping("/register")
+    public ResultDTO<Long> registerConsumer(
             @AuthenticationPrincipal CustomUserDetail customUserDetail,
             @RequestBody @Valid ModifyConsumerRequestDTO modifyConsumerRequestDTO) {
-        ConsumerDTO consumerDTO = modifyConsumerRequestDTO.convert();
-        long coNo = consumerService.modifyConsumer(consumerDTO);
+        long coNo = consumerService.registerConsumer(modifyConsumerRequestDTO);
 
         return ResultDTO.<Long>builder().data(coNo).build();
     }

@@ -18,5 +18,5 @@ public interface ConsumerMapper {
     // 로그인
     ConsumerDTO signIn(ConsumerDTO consumerDTO);
 
-    long modifyConsumer(ConsumerDTO consumerDTO);
+    long registerConsumer(ConsumerDTO consumerDTO);
 }

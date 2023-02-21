@@ -45,12 +45,13 @@
         )
     </insert>
 
-    <update id="modifyConsumer" >
+    <update id="registerConsumer" >
         UPDATE
             tbl_consumer
         SET
             co_name = #{coName},
             co_nickname = #{coNickname},
+            co_password = #{coPassword},
             co_phone = #{coPhone},
             co_birth = #{coBirth},
             co_gender = #{coGender},

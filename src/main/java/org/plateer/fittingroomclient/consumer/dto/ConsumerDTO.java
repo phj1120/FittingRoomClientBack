@@ -26,11 +26,13 @@ public class ConsumerDTO {
     private LocalDateTime coCreate_dt;
     private LocalDateTime co_modify_dt;
 
-    public ConsumerDTO(Long coNo, String coEmail, String coName, String coNickname,
+    public ConsumerDTO(Long coNo, String coEmail, String coPassword,
+                       String coName, String coNickname,
                        String coPhone, String coBirth, String coGender,
                        String coAddress, String coDetailAddress, String coPostNumber) {
         this.coNo = coNo;
         this.coEmail = coEmail;
+        this.coPassword = coPassword;
         this.coName = coName;
         this.coNickname = coNickname;
         this.coPhone = coPhone;

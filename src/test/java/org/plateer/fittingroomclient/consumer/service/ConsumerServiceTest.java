@@ -2,6 +2,7 @@ package org.plateer.fittingroomclient.consumer.service;
 
 import org.junit.jupiter.api.Test;
 import org.plateer.fittingroomclient.consumer.dto.ConsumerDTO;
+import org.plateer.fittingroomclient.consumer.dto.request.ModifyConsumerRequestDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
@@ -13,12 +14,12 @@ class ConsumerServiceTest {
 
     @Test
     void modify() {
-        ConsumerDTO consumerDTO = new ConsumerDTO(
-                14L, "hyeonj1998@naver.com", "coName", "coNickname",
+        ModifyConsumerRequestDTO modifyConsumerRequestDTO = new ModifyConsumerRequestDTO(
+                14L, "hyeonj1998@naver.com", "password",
+                "coName", "coNickname",
                 "010-1234-5678", "1998-11-20", "coGender",
                 "coAddress", "coDetailAddress", "1234");
-
-        long l = consumerService.modifyConsumer(consumerDTO);
+        long l = consumerService.registerConsumer(modifyConsumerRequestDTO);
 
         System.out.println(l);
     }
