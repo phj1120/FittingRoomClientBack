@@ -21,20 +21,25 @@ public class ConsumerDTO {
     private String coPhone;
     private String coAddress;
     private String coDetailAddress;
+    private String coPostNumber; // TODO 추후 추가 될 것 같아 미리 추가.
     private boolean coStatus;
     private LocalDateTime coCreate_dt;
     private LocalDateTime co_modify_dt;
 
-    public ConsumerDTO(String coEmail, String coName, String coNickname, String coGender, String coBirth,
-                       String coPhone, String coAddress, String coDetailAddress) {
+    public ConsumerDTO(Long coNo, String coEmail, String coName, String coNickname,
+                       String coPhone, String coBirth, String coGender,
+                       String coAddress, String coDetailAddress, String coPostNumber) {
+        this.coNo = coNo;
         this.coEmail = coEmail;
         this.coName = coName;
         this.coNickname = coNickname;
-        this.coGender = coGender;
-        this.coBirth = coBirth;
-        this.coIsSignUp = true;
         this.coPhone = coPhone;
+        this.coBirth = coBirth;
+        this.coGender = coGender;
         this.coAddress = coAddress;
         this.coDetailAddress = coDetailAddress;
+        this.coPostNumber = coPostNumber;
+
+        this.coIsSignUp = true;
     }
 }

@@ -16,8 +16,9 @@ class ConsumerServiceTest {
     @Test
     void modify() {
         ConsumerDTO consumerDTO = new ConsumerDTO(
-                "hyeonj1998@naver.com",
-                "coName", "coNickName", "Man", "1998-11-20", "010-1234-5678", "hi", "hi");
+                14L, "hyeonj1998@naver.com", "coName", "coNickname",
+                "010-1234-5678", "1998-11-20", "coGender",
+                "coAddress", "coDetailAddress", "1234");
 
         long l = consumerService.modifyConsumer(consumerDTO);
 
