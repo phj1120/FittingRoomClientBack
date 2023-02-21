@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.plateer.fittingroomclient.inquiry.mapper.InquiryMapper">
+
+    <insert id="insertInquiry">
+        INSERT INTO
+            tbl_inquiry (in_title, in_content, in_status, in_type, in_create_dt, co_no, or_no)
+        VALUES
+            (#{inTitle}, #{inContent}, #{inStatus}, #{inType}, now(), #{coNo}, #{orNo})
+    </insert>
+
+    <select id="getInquiry" resultType="InquiryDTO">
+        SELECT
+            inq.in_no, inq.in_title, inq.in_content, inq.in_status, inq.in_type, inq.in_create_dt,
+            con.co_name, inq.or_no
+        FROM
+            tbl_inquiry inq
+        LEFT JOIN tbl_consumer con ON inq.co_no = con.co_no
+            WHERE
+        inq.in_no = #{inNo}
+    </select>
+
+</mapper>
