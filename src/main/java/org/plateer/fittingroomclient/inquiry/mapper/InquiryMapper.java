@@ -1,6 +1,7 @@
 package org.plateer.fittingroomclient.inquiry.mapper;
 
 import org.plateer.fittingroomclient.inquiry.dto.InquiryDTO;
+import org.plateer.fittingroomclient.inquiry.dto.InquiryPageSearchRequestDTO;
 
 import java.util.List;
 
@@ -12,11 +13,13 @@ import java.util.List;
  **/
 public interface InquiryMapper {
 
-    List<InquiryDTO> getInquiryList(Long coNo);
+    List<InquiryDTO> getInquiryList(Long coNo, InquiryPageSearchRequestDTO inquiryPageSearchRequestDTO);
 
-    InquiryDTO getInquiry(Long inNo);
+    int getInquiryListCount(Long coNo, InquiryPageSearchRequestDTO inquiryPageSearchRequestDTO);
 
     int insertInquiry(InquiryDTO inquiryDTO);
+
+    InquiryDTO getInquiry(Long inNo);
 
     int updateInquiry(InquiryDTO inquiryDTO);
 

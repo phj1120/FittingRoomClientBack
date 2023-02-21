@@ -4,22 +4,76 @@
         "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="org.plateer.fittingroomclient.inquiry.mapper.InquiryMapper">
 
+    <!--문의 등록-->
     <insert id="insertInquiry">
         INSERT INTO
-            tbl_inquiry (in_title, in_content, in_status, in_type, in_create_dt, co_no, or_no)
+            tbl_inquiry (in_title, in_content, in_status, in_type, in_create_dt, pm_no, se_no, co_no)
         VALUES
-            (#{inTitle}, #{inContent}, #{inStatus}, #{inType}, now(), #{coNo}, #{orNo})
+            (#{inTitle}, #{inContent}, #{inStatus}, #{inType}, now(), #{pmNo}, #{seNo}, #{coNo})
     </insert>
 
+    <!--문의 리스트 조회-->
+    <select id="getInquiryList" resultType="InquiryDTO">
+        SELECT
+            in_no, in_title, in_type, in_status
+        FROM
+            tbl_inquiry
+        WHERE
+            co_no = #{coNo}
+            and in_status != 'DELETE'
+            and in_create_dt BETWEEN #{inquiryPageSearchRequestDTO.startDt} AND DATE_ADD(#{inquiryPageSearchRequestDTO.endDt}, INTERVAL 1 DAY)
+            and in_title like CONCAT('%', #{inquiryPageSearchRequestDTO.keyword} ,'%')
+        ORDER BY
+            in_no DESC
+        LIMIT
+            0, #{inquiryPageSearchRequestDTO.skip}
+    </select>
+
+    <!--문의 리스트 COUNT-->
+    <select id="getInquiryListCount" resultType="int">
+        SELECT
+            count(*)
+        FROM
+            tbl_inquiry
+        WHERE
+            co_no = #{coNo}
+            and in_status != 'DELETE'
+            and in_create_dt BETWEEN #{inquiryPageSearchRequestDTO.startDt} AND DATE_ADD(#{inquiryPageSearchRequestDTO.endDt}, INTERVAL 1 DAY)
+            and in_title like CONCAT('%', #{inquiryPageSearchRequestDTO.keyword} ,'%')
+    </select>
+
+    <!--문의 상세 조회-->
     <select id="getInquiry" resultType="InquiryDTO">
         SELECT
-            inq.in_no, inq.in_title, inq.in_content, inq.in_status, inq.in_type, inq.in_create_dt,
-            con.co_name, inq.or_no
+            tin.in_title, tin.in_type, tin.in_status, tin.in_content,
+            IF(tin.in_type = 'PRODUCT', tse.se_name, tro.ro_name) AS name
         FROM
-            tbl_inquiry inq
-        LEFT JOIN tbl_consumer con ON inq.co_no = con.co_no
-            WHERE
-        inq.in_no = #{inNo}
+            tbl_inquiry tin
+            LEFT JOIN tbl_seller tse on tin.se_no = tse.se_no
+            LEFT JOIN tbl_place_member tpm on tin.pm_no = tpm.pm_no
+            LEFT JOIN tbl_room tro on tpm.ro_no = tro.ro_no
+        WHERE
+            tin.in_no = #{inNo}
     </select>
+
+    <!--문의 수정-->
+    <update id="updateInquiry">
+        UPDATE
+            tbl_inquiry
+        SET
+            in_title = #{inTitle}, in_content = #{inContent}, in_modify_dt = now()
+        WHERE
+            in_no = #{inNo}
+    </update>
+
+    <!--문의 삭제-->
+    <update id="deleteInquiry">
+        UPDATE
+            tbl_inquiry
+        SET
+            in_status = 'DELETE'
+        WHERE
+            in_no = #{inNo}
+    </update>
 
 </mapper>

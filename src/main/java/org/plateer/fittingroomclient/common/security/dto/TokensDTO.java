@@ -1,4 +1,4 @@
-package org.plateer.fittingroomclient.common.common.security.dto;
+package org.plateer.fittingroomclient.common.security.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

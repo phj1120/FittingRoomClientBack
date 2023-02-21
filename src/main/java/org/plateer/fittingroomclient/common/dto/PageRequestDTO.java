@@ -1,4 +1,4 @@
-package org.plateer.fittingroomclient.common.common.dto;
+package org.plateer.fittingroomclient.common.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -18,6 +18,6 @@ public class PageRequestDTO {
     private int size = 10;
 
     public int getSkip() {
-        return (page - 1) * size;
+        return (page) * size;
     }
 }

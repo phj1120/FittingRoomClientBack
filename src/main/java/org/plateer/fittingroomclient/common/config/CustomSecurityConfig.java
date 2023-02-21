@@ -1,13 +1,13 @@
-package org.plateer.fittingroomclient.common.common.config;
+package org.plateer.fittingroomclient.common.config;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
-import org.plateer.fittingroomclient.common.common.security.JWTUtil;
-import org.plateer.fittingroomclient.common.common.security.filter.JWTLoginFilter;
-import org.plateer.fittingroomclient.common.common.security.filter.TokenCheckFilter;
-import org.plateer.fittingroomclient.common.common.security.handler.JWTLoginFailHandler;
-import org.plateer.fittingroomclient.common.common.security.handler.JWTLoginSuccessHandler;
-import org.plateer.fittingroomclient.common.common.security.service.CustomUserDetailsService;
+import org.plateer.fittingroomclient.common.security.JWTUtil;
+import org.plateer.fittingroomclient.common.security.filter.JWTLoginFilter;
+import org.plateer.fittingroomclient.common.security.filter.TokenCheckFilter;
+import org.plateer.fittingroomclient.common.security.handler.JWTLoginFailHandler;
+import org.plateer.fittingroomclient.common.security.handler.JWTLoginSuccessHandler;
+import org.plateer.fittingroomclient.common.security.service.CustomUserDetailsService;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;

@@ -15,37 +15,40 @@ import java.util.List;
 @Log4j2
 @RequiredArgsConstructor
 public class CartServiceImpl implements CartService {
+
     private final CartMapper cartMapper;
+
     @Override
     public Long insertCart(CartDTO cartDTO) {
-
-        return cartMapper.insertCart(cartDTO);
+        cartMapper.insertCart(cartDTO);
+        return cartDTO.getCaNo();
     }
+
     @Override
     public List<CartDTO> getCartList(Long coNo) {
-
         return cartMapper.getCartList(coNo);
     }
 
     @Override
     public Long deleteCart(Long caNo) {
-        return cartMapper.deleteCart(caNo);
+        cartMapper.deleteCart(caNo);
+        return caNo;
     }
 
     @Override
     public Long insertCartProduct(CartProductDTO cartProductDTO) {
-
-        return cartMapper.insertCartProduct(cartProductDTO);
+        cartMapper.insertCartProduct(cartProductDTO);
+        return cartProductDTO.getCaNo();
     }
 
     @Override
     public List<CartProductDTO> getCartProducts(Long caNo) {
-
         return cartMapper.getCartProducts(caNo);
     }
+
     @Override
     public Long deleteCartProduct(Long cpNo) {
-
-        return cartMapper.deleteCartProduct(cpNo);
+        cartMapper.deleteCartProduct(cpNo);
+        return cpNo;
     }
 }

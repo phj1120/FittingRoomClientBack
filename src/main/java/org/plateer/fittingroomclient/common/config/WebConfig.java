@@ -1,6 +1,6 @@
-package org.plateer.fittingroomclient.common.common.config;
+package org.plateer.fittingroomclient.common.config;
 
-import org.plateer.fittingroomclient.common.common.fomatter.LocalDateTimeFormatter;
+import org.plateer.fittingroomclient.common.fomatter.LocalDateTimeFormatter;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.format.FormatterRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;

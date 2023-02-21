@@ -1,10 +1,10 @@
-package org.plateer.fittingroomclient.common.common.security.controller;
+package org.plateer.fittingroomclient.common.security.controller;
 
 import io.jsonwebtoken.ExpiredJwtException;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
-import org.plateer.fittingroomclient.common.common.security.JWTUtil;
-import org.plateer.fittingroomclient.common.common.security.dto.TokensDTO;
+import org.plateer.fittingroomclient.common.security.JWTUtil;
+import org.plateer.fittingroomclient.common.security.dto.TokensDTO;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;

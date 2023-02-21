@@ -33,6 +33,4 @@ public class CartProductDTO {
 
     private String thumbnail; // 상품 썸네일
 
-
-
 }

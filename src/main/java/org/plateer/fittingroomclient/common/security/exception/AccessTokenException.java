@@ -1,4 +1,4 @@
-package org.plateer.fittingroomclient.common.common.security.exception;
+package org.plateer.fittingroomclient.common.security.exception;
 
 import com.google.gson.Gson;
 import org.springframework.http.MediaType;

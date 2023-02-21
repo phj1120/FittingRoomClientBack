@@ -9,13 +9,13 @@ public interface CartMapper {
 
     List<CartDTO> getCartList(Long coNo);
 
-    Long insertCart(CartDTO cartDTO);
+    int insertCart(CartDTO cartDTO);
 
-    Long deleteCart(Long caNo);
+    int deleteCart(Long caNo);
 
     List<CartProductDTO> getCartProducts(Long caNo);
 
-    Long insertCartProduct(CartProductDTO cartProductDTO);
+    int insertCartProduct(CartProductDTO cartProductDTO);
 
-    Long deleteCartProduct(Long cpNo);
+    int deleteCartProduct(Long cpNo);
 }

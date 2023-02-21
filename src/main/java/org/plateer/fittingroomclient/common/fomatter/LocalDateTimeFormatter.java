@@ -1,4 +1,4 @@
-package org.plateer.fittingroomclient.common.common.fomatter;
+package org.plateer.fittingroomclient.common.fomatter;
 
 import lombok.extern.log4j.Log4j2;
 import org.springframework.format.Formatter;

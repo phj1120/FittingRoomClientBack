@@ -1,4 +1,4 @@
-package org.plateer.fittingroomclient.common.common.config;
+package org.plateer.fittingroomclient.common.config;
 
 
 import org.modelmapper.ModelMapper;

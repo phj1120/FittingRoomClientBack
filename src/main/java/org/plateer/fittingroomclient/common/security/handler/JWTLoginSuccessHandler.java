@@ -1,9 +1,9 @@
-package org.plateer.fittingroomclient.common.common.security.handler;
+package org.plateer.fittingroomclient.common.security.handler;
 
 import com.google.gson.Gson;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
-import org.plateer.fittingroomclient.common.common.security.JWTUtil;
+import org.plateer.fittingroomclient.common.security.JWTUtil;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
 

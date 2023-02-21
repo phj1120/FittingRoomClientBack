@@ -1,12 +1,12 @@
-package org.plateer.fittingroomclient.common.common.security.filter;
+package org.plateer.fittingroomclient.common.security.filter;
 
 import io.jsonwebtoken.ExpiredJwtException;
 import io.jsonwebtoken.MalformedJwtException;
 import io.jsonwebtoken.SignatureException;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
-import org.plateer.fittingroomclient.common.common.security.JWTUtil;
-import org.plateer.fittingroomclient.common.common.security.exception.AccessTokenException;
+import org.plateer.fittingroomclient.common.security.JWTUtil;
+import org.plateer.fittingroomclient.common.security.exception.AccessTokenException;
 import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.context.SecurityContextHolder;

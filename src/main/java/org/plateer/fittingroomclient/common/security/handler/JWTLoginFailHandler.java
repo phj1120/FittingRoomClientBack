@@ -1,4 +1,4 @@
-package org.plateer.fittingroomclient.common.common.security.handler;
+package org.plateer.fittingroomclient.common.security.handler;
 
 import com.google.gson.Gson;
 import lombok.extern.log4j.Log4j2;

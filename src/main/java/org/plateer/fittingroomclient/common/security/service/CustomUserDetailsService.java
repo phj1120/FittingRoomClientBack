@@ -1,8 +1,8 @@
-package org.plateer.fittingroomclient.common.common.security.service;
+package org.plateer.fittingroomclient.common.security.service;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
-import org.plateer.fittingroomclient.common.common.security.dto.CustomUserDetail;
+import org.plateer.fittingroomclient.common.security.dto.CustomUserDetail;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -11,7 +11,6 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.Collections;
-import java.util.Objects;
 
 /**
  * Spring Security 사용자 인가를 위해 필요한 UserDetailsService 구현체

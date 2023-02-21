@@ -1,4 +1,4 @@
-package org.plateer.fittingroomclient.common.common.dto;
+package org.plateer.fittingroomclient.common.dto;
 
 import lombok.Builder;
 import lombok.Data;

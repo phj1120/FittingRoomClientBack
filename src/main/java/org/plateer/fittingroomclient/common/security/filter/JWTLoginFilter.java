@@ -1,4 +1,4 @@
-package org.plateer.fittingroomclient.common.common.security.filter;
+package org.plateer.fittingroomclient.common.security.filter;
 
 import lombok.extern.log4j.Log4j2;
 import org.springframework.boot.json.GsonJsonParser;

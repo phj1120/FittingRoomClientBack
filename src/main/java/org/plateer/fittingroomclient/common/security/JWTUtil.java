@@ -1,4 +1,4 @@
-package org.plateer.fittingroomclient.common.common.security;
+package org.plateer.fittingroomclient.common.security;
 
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
