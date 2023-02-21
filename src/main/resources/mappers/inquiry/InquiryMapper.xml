@@ -60,8 +60,17 @@
     <update id="updateInquiry">
         UPDATE
             tbl_inquiry
-        SET
-            in_title = #{inTitle}, in_content = #{inContent}, in_modify_dt = now()
+        <set>
+            <if test="true">
+                in_modify_dt = now(),
+            </if>
+            <if test="inTitle != null">
+                in_title = #{inTitle},
+            </if>
+            <if test="inContent != null">
+                in_content = #{inContent},
+            </if>
+        </set>
         WHERE
             in_no = #{inNo}
     </update>

@@ -9,5 +9,6 @@
         <typeAlias alias="CartDTO" type="org.plateer.fittingroomclient.cart.dto.CartDTO"/>
         <typeAlias alias="CartProductDTO" type="org.plateer.fittingroomclient.cart.dto.CartProductDTO"/>
         <typeAlias alias="InquiryDTO" type="org.plateer.fittingroomclient.inquiry.dto.InquiryDTO"/>
+        <typeAlias alias="ConsumerDTO" type="org.plateer.fittingroomclient.consumer.dto.ConsumerDTO"/>
     </typeAliases>
 </configuration>

@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.plateer.fittingroomclient.consumer.mapper.ConsumerMapper">
+
+    <!--회원 정보 조회-->
+    <select id="getConsumerInfo" resultType="ConsumerDTO">
+        SELECT
+            *
+        FROM
+            tbl_consumer
+        WHERE
+            co_no = #{coNo}
+    </select>
+
+    <!--회원 정보 수정-->
+    <update id="updateConsumerInfo">
+        UPDATE
+            tbl_consumer
+        <set>
+            <if test="true">
+                co_modify_dt = now(),
+            </if>
+            <if test="coNickname != null">
+                co_nickname = #{coNickname},
+            </if>
+            <if test="coGender != null">
+                co_gender = #{coGender},
+            </if>
+            <if test="coBirth != null">
+                co_birth = #{coBirth},
+            </if>
+            <if test="coPhone != null">
+                co_phone = #{coPhone},
+            </if>
+            <if test="coAddress != null">
+                co_address = #{coAddress},
+            </if>
+            <if test="coDetailAddress != null">
+                co_detail_address = #{coDetailAddress},
+            </if>
+            <if test="coPassword != null">
+                co_password = #{coPassword},
+            </if>
+        </set>
+        WHERE
+            co_no = #{coNo}
+    </update>
+
+</mapper>
