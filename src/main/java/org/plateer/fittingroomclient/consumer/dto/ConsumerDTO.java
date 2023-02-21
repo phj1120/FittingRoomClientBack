@@ -44,4 +44,8 @@ public class ConsumerDTO {
 
         this.coIsSignUp = true;
     }
+
+    public void removePassword() {
+        this.coPassword = null;
+    }
 }

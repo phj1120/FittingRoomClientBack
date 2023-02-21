@@ -51,6 +51,7 @@ public class KakaoService {
                     .build();
             consumerMapper.socialLogin(consumerDTO);
         }
+        consumerDTO.removePassword();
 
         return new ConsumerWithTokens(consumerDTO, tokensDTO);
     }
