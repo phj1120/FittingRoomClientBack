@@ -7,6 +7,6 @@
     </settings>
     <typeAliases>
         <typeAlias alias="ReservationDTO" type="org.plateer.fittingroomclient.reservation.dto.ReservationDTO"/>
-
+        <typeAlias alias="getReservationListDTO" type="org.plateer.fittingroomclient.reservation.dto.getReservationListDTO"/>
     </typeAliases>
 </configuration>
