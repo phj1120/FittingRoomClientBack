@@ -2,7 +2,7 @@ package org.plateer.fittingroomclient.consumer.service;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
-import org.plateer.fittingroomclient.consumer.ConsumerDTO;
+import org.plateer.fittingroomclient.consumer.dto.ConsumerDTO;
 import org.plateer.fittingroomclient.consumer.mapper.ConsumerMapper;
 import org.springframework.stereotype.Service;
 

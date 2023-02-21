@@ -3,6 +3,8 @@ package org.plateer.fittingroomclient.oauth.kakao;
 import org.junit.jupiter.api.Test;
 import org.plateer.fittingroomclient.common.security.dto.TokensDTO;
 import org.plateer.fittingroomclient.consumer.mapper.ConsumerMapper;
+import org.plateer.fittingroomclient.oauth.kakao.dto.KakaoUserInfoDTO;
+import org.plateer.fittingroomclient.oauth.kakao.service.KakaoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 

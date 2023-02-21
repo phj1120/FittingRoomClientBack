@@ -1,6 +1,6 @@
 package org.plateer.fittingroomclient.consumer.mapper;
 
-import org.plateer.fittingroomclient.consumer.ConsumerDTO;
+import org.plateer.fittingroomclient.consumer.dto.ConsumerDTO;
 
 public interface ConsumerMapper {
     // 소셜 로그인

@@ -1,12 +1,14 @@
-package org.plateer.fittingroomclient.oauth.kakao;
+package org.plateer.fittingroomclient.oauth.kakao.service;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.plateer.fittingroomclient.common.security.JWTUtil;
 import org.plateer.fittingroomclient.common.security.dto.TokensDTO;
-import org.plateer.fittingroomclient.consumer.ConsumerDTO;
-import org.plateer.fittingroomclient.consumer.ConsumerWithTokens;
+import org.plateer.fittingroomclient.consumer.dto.ConsumerDTO;
+import org.plateer.fittingroomclient.consumer.dto.ConsumerWithTokens;
 import org.plateer.fittingroomclient.consumer.mapper.ConsumerMapper;
+import org.plateer.fittingroomclient.oauth.kakao.dto.KaKaoTokensDResponseDTO;
+import org.plateer.fittingroomclient.oauth.kakao.dto.KakaoUserInfoDTO;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;

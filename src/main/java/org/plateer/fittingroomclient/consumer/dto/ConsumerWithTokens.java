@@ -1,4 +1,4 @@
-package org.plateer.fittingroomclient.consumer;
+package org.plateer.fittingroomclient.consumer.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

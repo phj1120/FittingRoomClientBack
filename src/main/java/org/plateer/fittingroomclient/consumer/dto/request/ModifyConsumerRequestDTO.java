@@ -1,8 +1,9 @@
-package org.plateer.fittingroomclient.consumer;
+package org.plateer.fittingroomclient.consumer.dto.request;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import org.plateer.fittingroomclient.consumer.dto.ConsumerDTO;
 
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;

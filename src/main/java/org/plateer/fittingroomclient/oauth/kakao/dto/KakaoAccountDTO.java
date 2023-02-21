@@ -1,4 +1,4 @@
-package org.plateer.fittingroomclient.oauth.kakao;
+package org.plateer.fittingroomclient.oauth.kakao.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
