@@ -9,5 +9,5 @@ public interface ReservationService {
 
     List<getReservationListDTO> getReservationList(Long coNo);
 
-    
+
 }
