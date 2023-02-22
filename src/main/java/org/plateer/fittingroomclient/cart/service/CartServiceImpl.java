@@ -10,42 +10,52 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
+/**
+ * 장바구니 관련 기능 Service
+ * 작성자: 이수영
+ * 일시: 2023-02-21
+ * 버전: v1
+ **/
+
 @Service
 @Transactional
 @Log4j2
 @RequiredArgsConstructor
 public class CartServiceImpl implements CartService {
+
     private final CartMapper cartMapper;
+
     @Override
     public Long insertCart(CartDTO cartDTO) {
-
-        return cartMapper.insertCart(cartDTO);
+        cartMapper.insertCart(cartDTO);
+        return cartDTO.getRoNo();
     }
+
     @Override
     public List<CartDTO> getCartList(Long coNo) {
-
         return cartMapper.getCartList(coNo);
     }
 
     @Override
     public Long deleteCart(Long caNo) {
-        return cartMapper.deleteCart(caNo);
+        cartMapper.deleteCart(caNo);
+        return caNo;
     }
 
     @Override
     public Long insertCartProduct(CartProductDTO cartProductDTO) {
-
-        return cartMapper.insertCartProduct(cartProductDTO);
+        cartMapper.insertCartProduct(cartProductDTO);
+        return cartProductDTO.getCaNo();
     }
 
     @Override
     public List<CartProductDTO> getCartProducts(Long caNo) {
-
         return cartMapper.getCartProducts(caNo);
     }
+
     @Override
     public Long deleteCartProduct(Long cpNo) {
-
-        return cartMapper.deleteCartProduct(cpNo);
+        cartMapper.deleteCartProduct(cpNo);
+        return cpNo;
     }
 }
