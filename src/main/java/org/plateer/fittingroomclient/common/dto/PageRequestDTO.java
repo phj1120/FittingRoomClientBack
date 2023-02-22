@@ -18,6 +18,6 @@ public class PageRequestDTO {
     private int size = 10;
 
     public int getSkip() {
-        return (page - 1) * size;
+        return (page) * size;
     }
 }

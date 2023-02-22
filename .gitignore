@@ -3,7 +3,7 @@
 
 src/main/resources/*.properties
 images
-
+src/main/resources/*.properties
 ### Eclipse ###
 .metadata
 bin/

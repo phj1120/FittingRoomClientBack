@@ -10,21 +10,35 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 @Builder
 public class ConsumerDTO {
-    private Long coNo;
-    private String coName;
-    private String coNickname;
-    private String coGender;
-    private String coBirth;
-    private String coEmail;
-    private String coPassword;
-    private boolean coIsSignUp = false;
-    private String coPhone;
-    private String coAddress;
-    private String coDetailAddress;
-    private String coPostNumber; // TODO 추후 추가 될 것 같아 미리 추가.
-    private boolean coStatus;
-    private LocalDateTime coCreate_dt;
-    private LocalDateTime co_modify_dt;
+    private Long coNo; // 구매자 번호
+
+    private String coName; // 이름
+
+    private String coNickname; // 닉네임
+
+    private String coGender; // 성별
+
+    private String coBirth; // 생년월일
+
+    private String coPassword; // 비밀번호
+
+    private String coEmail; // 이메일
+
+    private String coPhone; // 전화번호
+
+    private String coAddress; // 주소
+
+    private String coDetailAddress; // 상세주소
+
+    private Boolean coStatus; // 상태
+
+    private LocalDateTime coCreateDt; // 가입일
+
+    private LocalDateTime coModifyDt; // 수정일
+
+    private Boolean coIsSignUp; // 소셜로그인여부
+
+    private String coPostNumber;
 
     public ConsumerDTO(Long coNo, String coEmail, String coPassword,
                        String coName, String coNickname,

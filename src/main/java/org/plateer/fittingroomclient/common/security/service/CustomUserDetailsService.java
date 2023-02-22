@@ -9,10 +9,10 @@ import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.Collections;
-
 
 /**
  * Spring Security 사용자 인가를 위해 필요한 UserDetailsService 구현체
@@ -43,5 +43,6 @@ public class CustomUserDetailsService implements UserDetailsService {
 
         log.info("[Login]: Consumer - {}", username);
         return userDetails;
+
     }
 }
