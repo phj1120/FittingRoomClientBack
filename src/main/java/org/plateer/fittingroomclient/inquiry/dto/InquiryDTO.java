@@ -29,39 +29,16 @@ public class InquiryDTO {
 
     private LocalDateTime inModifyDt; // 문의 수정일
 
-    private String coName; // 구매자 이름
+    private Long pmNo; // 장소제공자 번호
 
-    private String seName; // 판매자 이름
+    private Long seNo; // 판매자 번호
 
-    private String pmName; // 장소제공자 이름
+    private Long coNo; // 구매자 번호
 
-    /**
-     * 문의 등록
-     **/
-    public InquiryDTO(String inTitle, String inContent, InquiryStatus inStatus, InquiryType inType,
-                      String coName, String seName, String pmName) {
+    private String name; // 장소 or 상호 명
+
+    public InquiryDTO(String inTitle, String inContent) {
         this.inTitle = inTitle;
         this.inContent = inContent;
-        this.inStatus = inStatus;
-        this.inType = inType;
-        this.coName = coName;
-        this.seName = seName;
-        this.pmName = pmName;
-    }
-
-    /**
-     * 문의 조회
-     **/
-    public InquiryDTO(String inTitle, String inContent, InquiryStatus inStatus, InquiryType inType,
-                      LocalDateTime inCreateDt, LocalDateTime inModifyDt, String coName, String seName, String pmName) {
-        this.inTitle = inTitle;
-        this.inContent = inContent;
-        this.inStatus = inStatus;
-        this.inType = inType;
-        this.inCreateDt = inCreateDt;
-        this.inModifyDt = inModifyDt;
-        this.coName = coName;
-        this.seName = seName;
-        this.pmName = pmName;
     }
 }
