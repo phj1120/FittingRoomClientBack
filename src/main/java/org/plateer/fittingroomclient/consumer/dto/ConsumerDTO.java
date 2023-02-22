@@ -1,18 +1,15 @@
 package org.plateer.fittingroomclient.consumer.dto;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.time.LocalDateTime;
 
-@Data
-@Builder
-@AllArgsConstructor
+@Getter
+@ToString
 @NoArgsConstructor
+@AllArgsConstructor
+@Builder
 public class ConsumerDTO {
-
     private Long coNo; // 구매자 번호
 
     private String coName; // 이름
@@ -41,6 +38,32 @@ public class ConsumerDTO {
 
     private Boolean coIsSignUp; // 소셜로그인여부
 
-    private String checkPassword; // 비밀번호 확인
+    private String coPostNumber;
 
+    public ConsumerDTO(Long coNo, String coEmail, String coPassword,
+                       String coName, String coNickname,
+                       String coPhone, String coBirth, String coGender,
+                       String coAddress, String coDetailAddress, String coPostNumber) {
+        this.coNo = coNo;
+        this.coEmail = coEmail;
+        this.coPassword = coPassword;
+        this.coName = coName;
+        this.coNickname = coNickname;
+        this.coPhone = coPhone;
+        this.coBirth = coBirth;
+        this.coGender = coGender;
+        this.coAddress = coAddress;
+        this.coDetailAddress = coDetailAddress;
+        this.coPostNumber = coPostNumber;
+
+        this.coIsSignUp = true;
+    }
+
+    public void removePassword() {
+        this.coPassword = null;
+    }
+
+    public void setPasswordByEncoded(String encodedPassword) {
+        this.coPassword = encodedPassword;
+    }
 }

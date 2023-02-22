@@ -6,6 +6,9 @@
         <setting name="mapUnderscoreToCamelCase" value="true"/>
     </settings>
     <typeAliases>
+        <typeAlias alias="ReservationDTO" type="org.plateer.fittingroomclient.reservation.dto.ReservationDTO"/>
+        <typeAlias alias="getReservationListDTO" type="org.plateer.fittingroomclient.reservation.dto.getReservationListDTO"/>
+        <typeAlias alias="CartProductListDTO" type="org.plateer.fittingroomclient.cart.dto.CartProductListDTO"/>
         <typeAlias alias="RoomDTO" type="org.plateer.fittingroomclient.room.dto.RoomDTO"/>
         <typeAlias alias="ProductDTO" type="org.plateer.fittingroomclient.product.dto.ProductDTO"/>
         <typeAlias alias="CartDTO" type="org.plateer.fittingroomclient.cart.dto.CartDTO"/>

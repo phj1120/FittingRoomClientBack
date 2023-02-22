@@ -4,6 +4,7 @@ import com.google.gson.Gson;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.plateer.fittingroomclient.common.security.JWTUtil;
+import org.plateer.fittingroomclient.common.security.dto.TokensDTO;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
 
@@ -31,9 +32,9 @@ public class JWTLoginSuccessHandler implements AuthenticationSuccessHandler {
 
         // 사용자의 아이디를 담은 jwt 토큰 생성
         String memberId = authentication.getName();
-        // TODO 테스트를 위해 시간 늘림
-        String access = jwtUtil.generateToken(Map.of("memberId", memberId), 2000);
-        String refresh = jwtUtil.generateToken(Map.of("memberId", memberId), 10000);
+        TokensDTO tokensDTO = jwtUtil.generateTokens(memberId);
+        String access = tokensDTO.getAccess();
+        String refresh = tokensDTO.getRefresh();
 
         // 응답 생성
         response.setContentType("application/json");

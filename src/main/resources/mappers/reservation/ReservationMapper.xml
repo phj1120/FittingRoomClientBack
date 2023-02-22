@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.plateer.fittingroomclient.reservation.mapper.ReservationMapper">
+
+
+    <insert id="insertTest">
+        insert into tbl_reservation (re_modify_dt, re_dt, re_price, re_status,re_create_dt,or_no)
+        values(null, #{reDt}, #{rePrice},#{reStatus} , now(), #{orNo})
+
+    </insert>
+
+    <select id="getReservationList" resultType="getReservationListDTO">
+        SELECT
+        a.*
+        ,c.*
+        ,(SELECT ro_name  FROM tbl_room WHERE ro_no = a.ro_no) AS ro_name
+        ,(SELECT prf_name FROM tbl_product_file WHERE prf_no = 10) AS prf_name
+        FROM tbl_cart a, tbl_order b, tbl_reservation c
+        WHERE a.co_no = 1
+        AND a.ca_no = b.ca_no
+        AND b.or_no = c.or_no
+        AND b.or_status ='승인';
+    </select>
+
+    <update id="modifyReservation">
+        update
+            tbl_reservation
+        <set>
+            re_dt = #{reDt},
+            re_modify_dt = now()
+        </set>
+        where re_no = #{reNo}
+    </update>
+</mapper>
