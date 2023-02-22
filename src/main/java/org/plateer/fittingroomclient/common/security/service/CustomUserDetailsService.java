@@ -3,6 +3,8 @@ package org.plateer.fittingroomclient.common.security.service;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.plateer.fittingroomclient.common.security.dto.CustomUserDetail;
+import org.plateer.fittingroomclient.consumer.dto.ConsumerDTO;
+import org.plateer.fittingroomclient.consumer.service.ConsumerService;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -18,27 +20,28 @@ import java.util.Collections;
  * 일시: 2023-02-17
  * 버전: v1
  **/
-@RequiredArgsConstructor
 @Service
 @Log4j2
+@RequiredArgsConstructor
 public class CustomUserDetailsService implements UserDetailsService {
+    private final ConsumerService consumerService;
+
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        // TODO 사용자 조회하는 로직 추가 필요
-//        throw new IllegalAccessError("존재하지 않는 사용자");
-        log.info("[Login]: Consumer - {}", username);
+        ConsumerDTO consumerDTO = consumerService.getConsumerByEmail(username);
 
         UserDetails userDetails = CustomUserDetail.builder()
                 .username(username)
-                .password(new BCryptPasswordEncoder().encode("password"))
-                .userNo(1L)
+                .password(consumerDTO.getCoPassword())
+                .userNo(consumerDTO.getCoNo())
                 .authorities(Collections.singleton(new SimpleGrantedAuthority("ROLE_CONSUMER")))
-                .isEnabled(true)
+                .isEnabled(consumerDTO.isCoStatus())
                 .isCredentialsNonExpired(true)
                 .isAccountNonLocked(true)
                 .isAccountNonExpired(true)
                 .build();
 
+        log.info("[Login]: Consumer - {}", username);
         return userDetails;
 
     }

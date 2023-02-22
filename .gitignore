@@ -1,6 +1,7 @@
 # Created by https://www.toptal.com/developers/gitignore/api/intellij+all,eclipse,java,macos
 # Edit at https://www.toptal.com/developers/gitignore?templates=intellij+all,eclipse,java,macos
 
+src/main/resources/*.properties
 images
 src/main/resources/*.properties
 ### Eclipse ###
