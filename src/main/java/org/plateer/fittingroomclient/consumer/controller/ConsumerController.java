@@ -2,6 +2,9 @@ package org.plateer.fittingroomclient.consumer.controller;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 import org.plateer.fittingroomclient.common.dto.ResultDTO;
 import org.plateer.fittingroomclient.consumer.dto.ConsumerDTO;
 import org.plateer.fittingroomclient.consumer.service.ConsumerService;
