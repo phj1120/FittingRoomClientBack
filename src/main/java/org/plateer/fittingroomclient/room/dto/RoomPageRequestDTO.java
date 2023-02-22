@@ -1,7 +1,12 @@
 package org.plateer.fittingroomclient.room.dto;
 
+import lombok.Data;
+import lombok.NoArgsConstructor;
 import org.plateer.fittingroomclient.common.dto.PageRequestDTO;
 
+
+@Data
+@NoArgsConstructor
 public class RoomPageRequestDTO extends PageRequestDTO {
     RoomSearchType[] type;
     String keyword;
