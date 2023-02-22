@@ -15,7 +15,7 @@ class ConsumerServiceTest {
     @Test
     void modify() {
         ModifyConsumerRequestDTO modifyConsumerRequestDTO = new ModifyConsumerRequestDTO(
-                14L, "hyeonj1998@naver.com", "password",
+                17L, "hyeonj1998@naver.com", "password",
                 "coName", "coNickname",
                 "010-1234-5678", "1998-11-20", "coGender",
                 "coAddress", "coDetailAddress", "1234");

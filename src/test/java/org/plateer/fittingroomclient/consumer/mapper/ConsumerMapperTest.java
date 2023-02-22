@@ -42,7 +42,6 @@ class ConsumerMapperTest {
                 .coGender("성별")
                 .coBirth("123456")
                 .coPassword(passwordEncoder.encode("1234"))
-                .checkPassword(passwordEncoder.encode("1234"))
                 .coPhone("010-1234-5678")
                 .coAddress("서울특별시")
                 .coDetailAddress("강남구")

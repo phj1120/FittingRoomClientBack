@@ -66,7 +66,7 @@ class CartMapperTest {
 
     @Test
     void deleteCartProduct() {
-        int result = cartMapper.deleteCartProduct(14L);
+        long result = cartMapper.deleteCartProduct(14L);
         log.info(result);
     }
 }
