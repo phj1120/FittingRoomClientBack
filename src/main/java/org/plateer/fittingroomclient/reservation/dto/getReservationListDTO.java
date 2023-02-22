@@ -7,6 +7,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 @Data
 @Builder
@@ -18,8 +19,8 @@ public class getReservationListDTO {
 
     private Long reNo;
 
-    @JsonFormat(pattern = "yyyy-MM-dd")
-    private LocalDate reDt;
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+    private LocalDateTime reDt;
 
     private Long rePrice;
 

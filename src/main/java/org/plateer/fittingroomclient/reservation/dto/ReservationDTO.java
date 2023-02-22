@@ -5,6 +5,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -21,12 +22,14 @@ public class ReservationDTO {
    @JsonFormat(pattern = "yyyy-MM-dd")
     private LocalDateTime reCreatDt;
 
-    @JsonFormat(pattern = "yyyy-MM-dd")
-    private LocalDate reDt;
+    @DateTimeFormat(pattern = "yyyy-MM-dd'T'HH:mm:ss")
+    private LocalDateTime reDt;
+    //2021-12-22 09:00:00 ~ 2021-12-22 10:00:00
 
     private Long rePrice;
 
     private String reStatus;
 
     private Long orNo;
+
 }

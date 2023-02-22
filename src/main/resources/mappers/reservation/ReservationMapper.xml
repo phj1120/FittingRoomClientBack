@@ -24,4 +24,13 @@
         AND b.or_status ='승인';
     </select>
 
+    <update id="modifyReservation">
+        update
+            tbl_reservation
+        <set>
+            re_dt = #{reDt},
+            re_modify_dt = now()
+        </set>
+        where re_no = #{reNo}
+    </update>
 </mapper>
