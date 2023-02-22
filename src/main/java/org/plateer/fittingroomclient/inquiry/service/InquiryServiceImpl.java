@@ -28,14 +28,14 @@ public class InquiryServiceImpl implements InquiryService{
     private final InquiryMapper inquiryMapper;
 
     @Override
-    public Long insertInquiry(InquiryDTO inquiryDTO) {
+    public Boolean insertInquiry(InquiryDTO inquiryDTO) {
         if(inquiryDTO.getSeNo() != null) {
             inquiryDTO.setInType(InquiryType.PRODUCT);
         } else {
             inquiryDTO.setInType(InquiryType.PLACE);
         }
         inquiryMapper.insertInquiry(inquiryDTO);
-        return inquiryDTO.getInNo();
+        return true;
     }
 
     @Override

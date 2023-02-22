@@ -28,7 +28,7 @@ public class CartServiceImpl implements CartService {
     @Override
     public Long insertCart(CartDTO cartDTO) {
         cartMapper.insertCart(cartDTO);
-        return cartDTO.getCaNo();
+        return cartDTO.getRoNo();
     }
 
     @Override

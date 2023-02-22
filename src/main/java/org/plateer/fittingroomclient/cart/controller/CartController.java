@@ -31,7 +31,6 @@ public class CartController {
 //    @PreAuthorize("hasRole('CONSUMER')")
     @PostMapping("")
     public ResultDTO<Long> insertCart(CartDTO cartDTO) {
-
         Long result = cartService.insertCart(cartDTO);
 
         return ResultDTO.<Long>builder().data(result).build();

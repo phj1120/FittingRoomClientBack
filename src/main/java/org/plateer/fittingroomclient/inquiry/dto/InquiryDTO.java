@@ -29,11 +29,11 @@ public class InquiryDTO {
 
     private LocalDateTime inModifyDt; // 문의 수정일
 
-    private String pmNo; // 장소제공자 번호
+    private Long pmNo; // 장소제공자 번호
 
-    private String seNo; // 판매자 번호
+    private Long seNo; // 판매자 번호
 
-    private String coNo; // 구매자 번호
+    private Long coNo; // 구매자 번호
 
     private String name; // 장소 or 상호 명
 

@@ -29,10 +29,10 @@ public class InquiryController {
      **/
     //    @PreAuthorize("hasRole('CONSUMER')")
     @PostMapping("/inquiry")
-    public ResultDTO<Long> insertInquiry(InquiryDTO inquiryDTO) {
-        Long result = inquiryService.insertInquiry(inquiryDTO);
+    public ResultDTO<Boolean> insertInquiry(InquiryDTO inquiryDTO) {
+        Boolean result = inquiryService.insertInquiry(inquiryDTO);
 
-        return ResultDTO.<Long>builder().data(result).build();
+        return ResultDTO.<Boolean>builder().data(result).build();
     }
 
     /**

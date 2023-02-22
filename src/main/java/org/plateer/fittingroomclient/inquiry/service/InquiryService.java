@@ -13,7 +13,7 @@ import org.plateer.fittingroomclient.inquiry.dto.InquiryPageSearchRequestDTO;
 
 public interface InquiryService {
 
-    Long insertInquiry(InquiryDTO inquiryDTO);
+    Boolean insertInquiry(InquiryDTO inquiryDTO);
 
     PageResultDTO<InquiryDTO> getInquiryList(Long coNo, InquiryPageSearchRequestDTO inquiryPageSearchRequestDTO);
 
