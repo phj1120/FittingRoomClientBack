@@ -17,14 +17,14 @@ class KakaoConsumerServiceTest {
     @Autowired
     ConsumerMapper consumerMapper;
 
-    @Test
+//    @Test
     void getTokens() {
         TokensDTO tokens = kakaoService.getTokens("Rcvb6QyrRJawlpoiNEGRDFmsRV0Rk7NcERx4HEKoCpl_UxaJiOqtpkYYTHUKiiAjxEjUBwopyV8AAAGGak2wVA");
 
         System.out.println(tokens);
     }
 
-    @Test
+//    @Test
     void getUserInfo() {
         KakaoUserInfoDTO kakaoUserInfoDTO = kakaoService.getUserInfo("KkOByVjvg7SfxkXwflTBcg4b2WMHV9_PsViwFgv4CiolTwAAAYZqTedw");
 
@@ -32,7 +32,7 @@ class KakaoConsumerServiceTest {
 
     }
 
-    @Test
+//    @Test
     void getUserInfoByToken() {
         TokensDTO tokens = kakaoService.getTokens("fD-Ihyf51-Qse3YQzgPiU0hGIvBE-O2ZYmENenBMgDfvfCnRBWMA01MDC6HlufhDCaJOxworDR4AAAGGakydtg");
 

@@ -21,7 +21,7 @@ public class ReservationServiceTests {
         IntStream.rangeClosed(1, 4).forEach((i) -> {
 
             ReservationDTO reservationDTO = ReservationDTO.builder()
-                    .reDt(LocalDate.now())
+                    .reDt(LocalDateTime.now())
                     .rePrice(20000L)
                     .reStatus("승인")
                     .orNo((long)i)
