@@ -9,7 +9,12 @@ import org.plateer.fittingroomclient.inquiry.dto.InquiryPageSearchRequestDTO;
 import org.plateer.fittingroomclient.inquiry.service.InquiryService;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
+/**
+ * Q&A 관련 기능 Controller
+ * 작성자: 이수영
+ * 일시: 2023-02-21
+ * 버전: v1
+ **/
 
 @RestController
 @RequestMapping("api/consumer")

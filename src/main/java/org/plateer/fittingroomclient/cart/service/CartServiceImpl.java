@@ -10,6 +10,13 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
+/**
+ * 장바구니 관련 기능 Service
+ * 작성자: 이수영
+ * 일시: 2023-02-21
+ * 버전: v1
+ **/
+
 @Service
 @Transactional
 @Log4j2

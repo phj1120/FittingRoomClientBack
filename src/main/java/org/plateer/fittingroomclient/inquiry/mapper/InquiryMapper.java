@@ -6,9 +6,9 @@ import org.plateer.fittingroomclient.inquiry.dto.InquiryPageSearchRequestDTO;
 import java.util.List;
 
 /**
- * Q&A 관리 Mapper
+ * Q&A 관련 기능 Mapper
  * 작성자: 이수영
- * 일시: 2023-02-20
+ * 일시: 2023-02-21
  * 버전: v1
  **/
 public interface InquiryMapper {

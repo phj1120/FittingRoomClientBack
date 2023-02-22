@@ -41,4 +41,6 @@ public class ConsumerDTO {
 
     private Boolean coIsSignUp; // 소셜로그인여부
 
+    private String checkPassword; // 비밀번호 확인
+
 }

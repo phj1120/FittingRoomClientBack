@@ -10,6 +10,13 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+/**
+ * 장바구니 관련 기능 Controller
+ * 작성자: 이수영
+ * 일시: 2023-02-21
+ * 버전: v1
+ **/
+
 @RestController
 @RequestMapping("api/consumer/cart")
 @RequiredArgsConstructor
