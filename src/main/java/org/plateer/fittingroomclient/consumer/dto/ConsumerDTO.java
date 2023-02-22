@@ -62,4 +62,8 @@ public class ConsumerDTO {
     public void removePassword() {
         this.coPassword = null;
     }
+
+    public void setPasswordByEncoded(String encodedPassword) {
+        this.coPassword = encodedPassword;
+    }
 }

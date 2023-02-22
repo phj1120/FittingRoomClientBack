@@ -35,7 +35,7 @@ public class CustomUserDetailsService implements UserDetailsService {
                 .password(consumerDTO.getCoPassword())
                 .userNo(consumerDTO.getCoNo())
                 .authorities(Collections.singleton(new SimpleGrantedAuthority("ROLE_CONSUMER")))
-                .isEnabled(consumerDTO.isCoStatus())
+                .isEnabled(consumerDTO.getCoIsSignUp())
                 .isCredentialsNonExpired(true)
                 .isAccountNonLocked(true)
                 .isAccountNonExpired(true)
