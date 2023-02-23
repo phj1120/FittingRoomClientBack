@@ -6,7 +6,6 @@ import org.plateer.fittingroomclient.consumer.dto.ConsumerDTO;
 import org.plateer.fittingroomclient.consumer.dto.request.ModifyConsumerRequestDTO;
 import org.plateer.fittingroomclient.consumer.mapper.ConsumerMapper;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 

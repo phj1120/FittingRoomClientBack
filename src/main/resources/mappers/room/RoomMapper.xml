@@ -5,12 +5,15 @@
 <mapper namespace="org.plateer.fittingroomclient.room.mapper.RoomMapper">
     <select id="getRoomCount" resultType="int">
         SELECT
-            COUNT(DISTINCT CONCAT(A.pm_no, A.pm_status, B.ro_no, B.ro_name, B.ro_address, B.ro_detail_address, B.ro_postcode))
+            COUNT(
+                    DISTINCT
+                    CONCAT(A.pm_no, A.pm_status, B.ro_no, B.ro_name, B.ro_address, B.ro_detail_address, B.ro_postcode)
+            )
         FROM
             tbl_place_member A
             LEFT JOIN tbl_room B ON A.ro_no = B.ro_no
         WHERE
-            A.pm_status NOT IN ( '폐업', '탈퇴' )
+            A.pm_status NOT IN ( '폐업', '탈퇴', '대기' )
     </select>
 
     <select id="getRoomList" resultType="RoomDTO">
@@ -21,7 +24,8 @@
             B.ro_name,
             B.ro_address,
             B.ro_detail_address,
-            B.ro_postcode
+            B.ro_postcode,
+            (SELECT C.rf_uuid FROM tbl_place_file C WHERE C.ro_no = B.ro_no ORDER BY C.rf_thumbnail DESC LIMIT 1) AS roThumbnail
         FROM
             tbl_place_member A
             LEFT JOIN tbl_room B ON A.ro_no = B.ro_no
@@ -55,7 +59,7 @@
                 C.se_status NOT IN ( '폐업', '탈퇴', '거부', '대기' )
             AND A.pm_status NOT IN ( '폐업', '탈퇴' )
             AND D.pr_status NOT IN ( 'INACTIVE', 'DELETE' )
-            AND A.pm_no = 1
+            AND A.pm_no = #{ pmNo }
         GROUP BY
             A.pm_no,
             A.pm_status,
