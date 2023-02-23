@@ -15,7 +15,7 @@ import java.util.Arrays;
 @Configuration
 @Log4j2
 @EnableWebSecurity
-public class CustomSecurityConfig { 
+public class CustomSecurityConfig {
 
     @Bean
     public SecurityFilterChain filterChain(final HttpSecurity http) throws Exception {

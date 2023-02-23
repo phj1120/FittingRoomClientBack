@@ -1,8 +1,13 @@
 package org.plateer.fittingroomclient.product.dto;
 
+import lombok.Data;
+import lombok.NoArgsConstructor;
 import org.plateer.fittingroomclient.common.dto.PageRequestDTO;
 
 
+
+@Data
+@NoArgsConstructor
 public class ProductPageRequestDTO extends PageRequestDTO {
     Long seNo;
     ProductSearchType[] type;
