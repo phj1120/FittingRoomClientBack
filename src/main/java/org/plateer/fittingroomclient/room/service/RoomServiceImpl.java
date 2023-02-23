@@ -29,8 +29,6 @@ public class RoomServiceImpl implements RoomService {
         return pageResultDTO;
     }
 
-    private final RoomMapper roomMapper;
-
     @Override
     public RoomDTO getRoom(Long roNo) {
         RoomDTO room = roomMapper.getRoom(roNo);
