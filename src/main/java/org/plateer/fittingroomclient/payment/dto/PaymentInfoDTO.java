@@ -24,6 +24,7 @@ public class PaymentInfoDTO {
     private String coPhone; // 전화번호
 
     // 장소 정보
+    private Long roNo; // 장소 번호
     private String roName; // 이름
     private String roAddress; // 주소
     private String roDetailAddress; // 상세 주소
@@ -43,10 +44,13 @@ public class PaymentInfoDTO {
         this.coBirth = consumerDTO.getCoBirth();
         this.coEmail = consumerDTO.getCoEmail();
         this.coPhone = consumerDTO.getCoPhone();
+
+        this.roNo = roomDTO.getRoNo();
         this.roName = roomDTO.getRoName();
         this.roAddress = roomDTO.getRoAddress();
         this.roDetailAddress = roomDTO.getRoDetailAddress();
         this.roPostCode = roomDTO.getRoPostCode();
+
         this.products = products;
 
         this.payAmount = (long) (10000 + (products.size() * 1000));
