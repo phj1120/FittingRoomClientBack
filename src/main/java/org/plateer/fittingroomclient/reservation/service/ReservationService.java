@@ -1,7 +1,7 @@
 package org.plateer.fittingroomclient.reservation.service;
 
-import org.plateer.fittingroomclient.cart.dto.CartDTO;
 import org.plateer.fittingroomclient.cart.dto.CartProductListDTO;
+import org.plateer.fittingroomclient.payment.dto.AbleReservationDTO;
 import org.plateer.fittingroomclient.reservation.dto.ReservationDTO;
 import org.plateer.fittingroomclient.reservation.dto.getReservationListDTO;
 
@@ -15,6 +15,8 @@ public interface ReservationService {
     List<CartProductListDTO> getReservationDetail(Long caNo);
 
     Long modifyReservationDetail(ReservationDTO reservationDTO);
+
+    List<Long> getAbleReservation(AbleReservationDTO ableReservationDTO);
 
 
 }

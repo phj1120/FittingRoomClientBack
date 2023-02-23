@@ -6,6 +6,7 @@ import org.plateer.fittingroomclient.cart.dto.CartDTO;
 import org.plateer.fittingroomclient.cart.dto.CartProductListDTO;
 import org.plateer.fittingroomclient.cart.mapper.CartMapper;
 import org.plateer.fittingroomclient.order.mapper.OrderMapper;
+import org.plateer.fittingroomclient.payment.dto.AbleReservationDTO;
 import org.plateer.fittingroomclient.reservation.dto.ReservationDTO;
 import org.plateer.fittingroomclient.reservation.dto.getReservationListDTO;
 import org.plateer.fittingroomclient.reservation.mapper.ReservationMapper;
@@ -38,5 +39,10 @@ public class ReservationServiceImpl implements ReservationService{
     public Long modifyReservationDetail(ReservationDTO reservationDTO) {
         orderMapper.insertModifyReservation(reservationDTO.getReNo());
         return reservationMapper.modifyReservation(reservationDTO);
+    }
+
+    @Override
+    public List<Long> getAbleReservation(AbleReservationDTO ableReservationDTO) {
+        return null;
     }
 }
