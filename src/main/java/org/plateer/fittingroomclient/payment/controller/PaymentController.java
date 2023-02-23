@@ -21,11 +21,11 @@ public class PaymentController {
     private final ReservationService reservationService;
 
     @PostMapping("/api/payment/approve")
-    public ResultDTO<PaymentApproveResponseDTO> paymentApprove(@RequestBody PaymentApproveDTO paymentApproveDTO) {
-        PaymentApproveResponseDTO paymentApproveResponseDTO = paymentService.paymentApprove(paymentApproveDTO);
+    public ResultDTO<Boolean> paymentApprove(@RequestBody PaymentApproveDTO paymentApproveDTO) {
+        paymentService.paymentApprove(paymentApproveDTO);
 
-        return ResultDTO.<PaymentApproveResponseDTO>builder()
-                .data(paymentApproveResponseDTO)
+        return ResultDTO.<Boolean>builder()
+                .data(true)
                 .build();
     }
 

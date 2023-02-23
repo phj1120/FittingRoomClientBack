@@ -50,4 +50,12 @@
         resultType="Long">
 
     </select>
+
+    <insert id="insertReservation">
+        <selectKey keyProperty="reNo" resultType="long" order="AFTER">
+            SELECT LAST_INSERT_ID()
+        </selectKey>
+        INSERT INTO tbl_reservation (re_dt, re_time, re_price, re_status, re_create_dt, or_no)
+        VALUES(#{reDt}, #{reTime}, #{rePrice},#{reStatus} , now(), #{orNo})
+    </insert>
 </mapper>

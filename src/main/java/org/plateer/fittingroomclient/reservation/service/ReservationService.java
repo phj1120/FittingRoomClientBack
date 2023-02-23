@@ -19,4 +19,5 @@ public interface ReservationService {
     List<Long> getAbleReservation(AbleReservationDTO ableReservationDTO);
 
 
+    Long insertReservation(ReservationDTO reservationDTO);
 }

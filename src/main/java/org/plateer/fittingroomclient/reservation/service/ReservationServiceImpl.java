@@ -45,4 +45,14 @@ public class ReservationServiceImpl implements ReservationService{
     public List<Long> getAbleReservation(AbleReservationDTO ableReservationDTO) {
         return null;
     }
+
+    @Override
+    public Long insertReservation(ReservationDTO reservationDTO) {
+        Long count = reservationMapper.insertReservation(reservationDTO);
+        if (count != 1) {
+            throw new IllegalArgumentException("Reservation 추가 실패");
+        }
+
+        return reservationDTO.getReNo();
+    }
 }
