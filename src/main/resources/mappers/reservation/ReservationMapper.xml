@@ -12,16 +12,28 @@
     </insert>
 
     <select id="getReservationList" resultType="getReservationListDTO">
-        SELECT
-        a.*
-        ,c.*
-        ,(SELECT ro_name  FROM tbl_room WHERE ro_no = a.ro_no) AS ro_name
-        ,(SELECT prf_name FROM tbl_product_file WHERE prf_no = 10) AS prf_name
-        FROM tbl_cart a, tbl_order b, tbl_reservation c
-        WHERE a.co_no = 1
+        SELECT B.or_no, B.or_status, B.ca_no,
+        B.ro_no, c.re_no, c.re_dt, c.re_price, d.ro_name, d.ro_address, d.ro_detail_address
+        ,e.rf_name
+        FROM
+        (
+        SELECT * FROM(
+        SELECT b.*, a.ro_no FROM tbl_cart a , tbl_order b
+        WHERE
+        a.co_no = #{coNo}
         AND a.ca_no = b.ca_no
-        AND b.or_no = c.or_no
-        AND b.or_status ='승인';
+        ORDER BY b.or_create_dt desc
+        LIMIT 18446744073709551615)  AS A
+        GROUP BY A.ca_no
+        ) AS B,
+        tbl_reservation c,
+        tbl_room d,
+        tbl_place_file e
+        WHERE
+        c.or_no = B.or_no
+        AND B.ro_no = d.ro_no
+        AND d.ro_no = e.ro_no
+        AND e.rf_thumbnail = 1
     </select>
 
     <update id="modifyReservation">
