@@ -71,4 +71,14 @@
             C.se_address,
             C.se_status
     </select>
+
+    <select id="getRoom"
+        resultType="org.plateer.fittingroomclient.room.dto.RoomDTO">
+        SELECT
+            *
+        FROM
+            tbl_room
+        WHERE
+            ro_no = #{roNo}
+    </select>
 </mapper>
