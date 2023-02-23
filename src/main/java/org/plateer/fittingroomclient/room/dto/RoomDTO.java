@@ -1,13 +1,10 @@
 package org.plateer.fittingroomclient.room.dto;
 
 
-import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
-import java.time.LocalDateTime;
 
 
 @Data
@@ -29,10 +26,14 @@ public class RoomDTO {
     private String roAddress;
     private String roDetailAddress;
     private String roPostCode;
+    private String roThumbnail;
 
     // 판매자정보 ( 상호명, 담당자, 연락처, 주소 )
     private String seName;
     private String seManager;
     private String sePhone;
     private String seAddress;
+
+    // 입점 브랜드 체크
+    private Boolean brandCheck = false;
 }

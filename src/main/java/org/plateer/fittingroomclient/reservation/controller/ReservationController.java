@@ -27,9 +27,9 @@ public class ReservationController {
         return reservationService.getReservationList(1L);
     }
 
-    @GetMapping("detail/{id}")
+    @GetMapping("detail/products/{id}")
     public List<CartProductListDTO> getReservationDetail(@PathVariable("id") Long caNo){
-        return reservationService.getReservationDetail(4L);
+        return reservationService.getReservationDetail(caNo);
     }
 
     @PutMapping("detail/modify")
