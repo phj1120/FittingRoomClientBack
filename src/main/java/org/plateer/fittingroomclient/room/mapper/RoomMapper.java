@@ -18,4 +18,7 @@ public interface RoomMapper {
 
     // 장소 정보를 통해 판매자 리스트 가져오기 ( 입어볼래 메인 페이지 - 입점 브랜드 보기 클릭 시 )
     List<RoomDTO> getRoomSellerList(RoomDTO roomDTO);
+
+    // 장소 정보 가져오기
+    RoomDTO getRoom(Long roNo);
 }

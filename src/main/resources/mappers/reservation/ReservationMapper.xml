@@ -45,4 +45,9 @@
         </set>
         where re_no = #{reNo}
     </update>
+
+    <select id="getAbleReservation"
+        resultType="Long">
+
+    </select>
 </mapper>

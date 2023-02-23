@@ -20,7 +20,6 @@ import java.util.List;
 public class RoomServiceImpl implements RoomService {
     private final RoomMapper roomMapper;
 
-
     @Override
     public PageResultDTO<RoomDTO> getRoomList(RoomPageRequestDTO roomPageRequestDTO) {
         List<RoomDTO> dtoList = roomMapper.getRoomList(roomPageRequestDTO);
@@ -30,6 +29,16 @@ public class RoomServiceImpl implements RoomService {
         return pageResultDTO;
     }
 
+    @Override
+    public RoomDTO getRoom(Long roNo) {
+        RoomDTO room = roomMapper.getRoom(roNo);
+        if (room == null) {
+            throw new IllegalArgumentException("존재 하지 않는 장소");
+        }
+
+        return room;
+    }
+    
     @Override
     public List<RoomDTO> getRoomSellerList(RoomDTO roomDTO) {
         return roomMapper.getRoomSellerList(roomDTO);

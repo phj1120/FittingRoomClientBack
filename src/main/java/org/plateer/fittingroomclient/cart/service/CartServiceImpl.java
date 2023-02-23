@@ -58,4 +58,14 @@ public class CartServiceImpl implements CartService {
         cartMapper.deleteCartProduct(cpNo);
         return cpNo;
     }
+
+    @Override
+    public CartDTO getCart(Long caNo) {
+        CartDTO cartDTO = cartMapper.getCart(caNo);
+        if (cartDTO == null) {
+            throw new IllegalArgumentException("존재하지 않는 장바구니");
+        }
+
+        return cartDTO;
+    }
 }

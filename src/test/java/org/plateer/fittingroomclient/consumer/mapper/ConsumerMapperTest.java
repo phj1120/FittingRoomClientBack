@@ -5,6 +5,7 @@ import org.junit.jupiter.api.Test;
 import org.plateer.fittingroomclient.consumer.dto.ConsumerDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -25,9 +26,6 @@ class ConsumerMapperTest {
     @Autowired
     ConsumerMapper consumerMapper;
 
-    @Autowired
-    PasswordEncoder passwordEncoder;
-
     @Test
     void getConsumerInfo() {
         ConsumerDTO result = consumerMapper.getConsumerInfo(1L);
@@ -41,7 +39,7 @@ class ConsumerMapperTest {
                 .coNickname("닉네임")
                 .coGender("성별")
                 .coBirth("123456")
-                .coPassword(passwordEncoder.encode("1234"))
+                .coPassword(new BCryptPasswordEncoder().encode("1234"))
                 .coPhone("010-1234-5678")
                 .coAddress("서울특별시")
                 .coDetailAddress("강남구")

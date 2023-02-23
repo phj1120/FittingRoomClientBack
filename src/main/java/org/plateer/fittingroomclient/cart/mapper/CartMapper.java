@@ -29,4 +29,5 @@ public interface CartMapper {
     
     List<CartProductListDTO> getReservationDetail(Long caNo);
 
+    CartDTO getCart(Long caNo);
 }
