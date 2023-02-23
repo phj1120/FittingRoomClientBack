@@ -15,10 +15,13 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 public class getReservationListDTO {
 
+    private Long orNo;
+
+    private String orStatus;
+
     private Long caNo;
 
     private Long reNo;
-
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private LocalDateTime reDt;
 
@@ -27,7 +30,11 @@ public class getReservationListDTO {
     private Long roNo;
     private String roName;
 
-    private String prfName;
+    private String roAddress;
+
+    private String roDetailAddress;
+
+    private String rfName;
 
 
 }
