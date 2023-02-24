@@ -7,6 +7,8 @@ import org.plateer.fittingroomclient.order.order.OrderDTO;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+
 @Service
 @Transactional
 @RequiredArgsConstructor
@@ -28,5 +30,12 @@ public class OrderServiceImpl implements OrderService {
         }
 
         return orderDTO.getOrNo();
+    }
+
+    @Override
+    public List<OrderDTO> existOrder(Long caNo) {
+        List<OrderDTO> orderDTOs = orderMapper.getOrderByCaNo(caNo);
+
+        return orderDTOs;
     }
 }

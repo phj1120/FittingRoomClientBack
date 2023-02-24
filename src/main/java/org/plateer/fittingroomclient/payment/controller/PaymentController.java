@@ -16,25 +16,26 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping
 @RequiredArgsConstructor
 public class PaymentController {
-
     private final PaymentService paymentService;
     private final ReservationService reservationService;
 
-    @PostMapping("/api/payment/approve")
-    public ResultDTO<Boolean> paymentApprove(@RequestBody PaymentApproveDTO paymentApproveDTO) {
-        paymentService.paymentApprove(paymentApproveDTO);
-
-        return ResultDTO.<Boolean>builder()
-                .data(true)
-                .build();
-    }
-
+    // TODO 본인의 장바구니만 접근 가능하도록 수정
     @GetMapping("/api/payment/{caNo}")
     public ResultDTO<PaymentInfoDTO> getPaymentDetails(@PathVariable Long caNo) {
         PaymentInfoDTO paymentDetails = paymentService.getPaymentDetails(caNo);
 
         return ResultDTO.<PaymentInfoDTO>builder()
                 .data(paymentDetails)
+                .build();
+    }
+
+    // TODO 본인의 장바구니만 결제 가능하도록 수정
+    @PostMapping("/api/payment/approve")
+    public ResultDTO<Boolean> paymentApprove(@RequestBody PaymentApproveDTO paymentApproveDTO) {
+        paymentService.paymentApprove(paymentApproveDTO);
+
+        return ResultDTO.<Boolean>builder()
+                .data(true)
                 .build();
     }
 

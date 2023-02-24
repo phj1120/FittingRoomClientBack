@@ -82,6 +82,13 @@ public class PaymentService {
     }
 
     public PaymentInfoDTO getPaymentDetails(Long caNo) {
+        // 주문 된 적이 있는 장바구니는 재 결제 불가능
+        List<OrderDTO> orderDTOS = orderService.existOrder(caNo);
+        if (orderDTOS.size() != 0) {
+            throw new IllegalArgumentException("결제 불가능한 장바구니");
+        }
+
+        // 장바구니 정보 확인
         CartDTO cart = cartService.getCart(caNo);
         Long roNo = cart.getRoNo(); // 방 번호
         Long coNo = cart.getCoNo(); // 고객 번호
