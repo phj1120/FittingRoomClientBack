@@ -8,7 +8,7 @@ import java.util.List;
 
 public interface RoomService {
     RoomDTO getRoom(Long roNo);
-    
+
     PageResultDTO<RoomDTO> getRoomList(RoomPageRequestDTO roomPageRequestDTO);
 
     List<RoomDTO> getRoomSellerList(RoomDTO roomDTO);
