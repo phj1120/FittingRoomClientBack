@@ -14,7 +14,7 @@ import java.util.concurrent.TimeUnit;
 public class Crawling {
 
     public static void main(String[] args)throws Exception {
-        System.setProperty("webdriver.chrome.driver", "E:\\DEV\\DevTool\\ChromeDriver\\110.0.5481.77\\chromedriver.exe");
+        System.setProperty("webdriver.chrome.driver", "D:\\DevTool\\ChromeDriver\\110.0.5481.77\\chromedriver.exe");
         WebDriver driver = new ChromeDriver();
         driver.manage().window().maximize();
 

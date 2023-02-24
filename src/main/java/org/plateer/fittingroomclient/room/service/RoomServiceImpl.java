@@ -38,7 +38,7 @@ public class RoomServiceImpl implements RoomService {
 
         return room;
     }
-    
+
     @Override
     public List<RoomDTO> getRoomSellerList(RoomDTO roomDTO) {
         return roomMapper.getRoomSellerList(roomDTO);
