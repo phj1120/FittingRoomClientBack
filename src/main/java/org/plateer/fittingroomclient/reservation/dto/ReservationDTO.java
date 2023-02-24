@@ -19,12 +19,14 @@ public class ReservationDTO {
     private Long reNo;
     @JsonFormat(pattern = "yyyy-MM-dd")
     private LocalDateTime reModifyDt;
-   @JsonFormat(pattern = "yyyy-MM-dd")
+    @JsonFormat(pattern = "yyyy-MM-dd")
     private LocalDateTime reCreatDt;
 
     @DateTimeFormat(pattern = "yyyy-MM-dd'T'HH:mm:ss")
     private LocalDateTime reDt;
     //2021-12-22 09:00:00 ~ 2021-12-22 10:00:00
+
+    private Long reTime;
 
     private Long rePrice;
 
@@ -32,4 +34,12 @@ public class ReservationDTO {
 
     private Long orNo;
 
+
+    public ReservationDTO(LocalDate reDt, Long reTime, Long rePrice, String reStatus, Long orNo) {
+        this.reDt = reDt.atStartOfDay();
+        this.reTime = reTime;
+        this.rePrice = rePrice;
+        this.reStatus = reStatus;
+        this.orNo = orNo;
+    }
 }
