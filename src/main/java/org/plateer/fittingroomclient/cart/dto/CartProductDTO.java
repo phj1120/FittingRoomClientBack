@@ -32,5 +32,7 @@ public class CartProductDTO {
     private Long prPrice; // 상품 가격
 
     private String thumbnail; // 상품 썸네일
+    
+    private Long prNo; // 상품 번호
 
 }

@@ -2,10 +2,11 @@ package org.plateer.fittingroomclient.inquiry.controller;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
+import org.plateer.fittingroomclient.common.dto.PageRequestDTO;
 import org.plateer.fittingroomclient.common.dto.PageResultDTO;
 import org.plateer.fittingroomclient.common.dto.ResultDTO;
 import org.plateer.fittingroomclient.inquiry.dto.InquiryDTO;
-import org.plateer.fittingroomclient.inquiry.dto.InquiryPageSearchRequestDTO;
+import org.plateer.fittingroomclient.inquiry.dto.enums.InquiryStatus;
 import org.plateer.fittingroomclient.inquiry.service.InquiryService;
 import org.springframework.web.bind.annotation.*;
 
@@ -39,9 +40,10 @@ public class InquiryController {
      * 문의 목록 조회
      **/
 //    @PreAuthorize("hasRole('CONSUMER')")
-    @GetMapping("/inquiry/list/{coNo}")
-    public PageResultDTO<InquiryDTO> getInquiryList(@PathVariable Long coNo, InquiryPageSearchRequestDTO inquiryPageSearchRequestDTO) {
-        PageResultDTO<InquiryDTO> result = inquiryService.getInquiryList(coNo, inquiryPageSearchRequestDTO);
+    @GetMapping("/inquiry/list")
+    public PageResultDTO<InquiryDTO> getInquiryList(Long coNo, PageRequestDTO pageRequestDTO) {
+        coNo = 1L;
+        PageResultDTO<InquiryDTO> result = inquiryService.getInquiryList(coNo, pageRequestDTO);
 
         return result;
     }
@@ -63,6 +65,9 @@ public class InquiryController {
     //    @PreAuthorize("hasRole('CONSUMER')")
     @PutMapping("/inquiry/{inNo}")
     public ResultDTO<Long> updateInquiry(InquiryDTO inquiryDTO) {
+        if (inquiryDTO.getInStatus() != InquiryStatus.WAITING) {
+            return ResultDTO.<Long>builder().error("이미 처리된 Q&A 입니다.").build();
+        }
         Long result = inquiryService.updateInquiry(inquiryDTO);
 
         return ResultDTO.<Long>builder().data(result).build();
