@@ -3,9 +3,8 @@ package org.plateer.fittingroomclient.payment.controller;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.plateer.fittingroomclient.common.dto.ResultDTO;
-import org.plateer.fittingroomclient.payment.dto.AbleReservationDTO;
+import org.plateer.fittingroomclient.payment.dto.TimeOfReservation;
 import org.plateer.fittingroomclient.payment.dto.PaymentApproveDTO;
-import org.plateer.fittingroomclient.payment.dto.PaymentApproveResponseDTO;
 import org.plateer.fittingroomclient.payment.dto.PaymentInfoDTO;
 import org.plateer.fittingroomclient.payment.service.PaymentService;
 import org.plateer.fittingroomclient.reservation.service.ReservationService;
@@ -40,7 +39,7 @@ public class PaymentController {
     }
 
     @GetMapping("/api/payment/ableReservation")
-    public void ableReservation(AbleReservationDTO reservationRequest) {
-        reservationService.getAbleReservation(reservationRequest); // TODO 기능 구현 미완료
+    public void ableReservation(TimeOfReservation reservationRequest) {
+        reservationService.getAbleTimeOfReservation(reservationRequest); // TODO 기능 구현 미완료
     }
 }
