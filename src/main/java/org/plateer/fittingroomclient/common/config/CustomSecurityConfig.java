@@ -25,20 +25,20 @@ import org.springframework.web.cors.CorsConfigurationSource;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 
 import java.util.Arrays;
-import java.util.List;
 
 /**
  * Spring Security 설정
  * 작성자: 박현준
- * 일시: 2023-02-17
- * 버전: v1
+ * 일시: 2023-02-24
+ * 버전: v2
  **/
 @Log4j2
 @Configuration
 @EnableWebSecurity
-@EnableGlobalMethodSecurity(prePostEnabled = true) // 어노테이션으로 시큐리티 기능 사용할 것인지
+@EnableGlobalMethodSecurity(prePostEnabled = true)
 @RequiredArgsConstructor
 public class CustomSecurityConfig {
+
     private final CustomUserDetailsService customUserDetailsService;
     private final JWTUtil jwtUtil;
 
@@ -65,6 +65,7 @@ public class CustomSecurityConfig {
         http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
 
         // URI 별 접근 권한 설정 @PreAuthorize 로 도 설정 가능
+        http.authorizeRequests().antMatchers("/api/room/**").permitAll();
 //        http.authorizeRequests()
 //                .antMatchers("/api/place/list").hasRole("PLACE");
 //                .antMatchers("/auth/api/sample/ex2").hasRole("USER")
@@ -93,7 +94,7 @@ public class CustomSecurityConfig {
     @Bean
     public CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration configuration = new CorsConfiguration();
-        configuration.setAllowedOriginPatterns(List.of("*"));
+        configuration.setAllowedOriginPatterns(Arrays.asList("*"));
         configuration.setAllowedMethods(Arrays.asList("HEAD", "GET", "POST", "PUT", "DELETE"));
         configuration.setAllowedHeaders(Arrays.asList("Authorization", "Cache-Control", "Content-Type"));
         configuration.setAllowCredentials(true);

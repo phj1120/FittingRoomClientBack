@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.plateer.fittingroomclient.reservation.mapper.ReservationMapper">
+
+
+    <insert id="insertTest">
+        insert into tbl_reservation (re_modify_dt, re_dt, re_price, re_status,re_create_dt,or_no)
+        values(null, #{reDt}, #{rePrice},#{reStatus} , now(), #{orNo})
+
+    </insert>
+
+    <select id="getReservationList" resultType="getReservationListDTO">
+        SELECT B.or_no, B.or_status, B.ca_no,
+        B.ro_no, c.re_no, c.re_dt, c.re_price, d.ro_name, d.ro_address, d.ro_detail_address
+        ,e.rf_name
+        FROM
+        (
+        SELECT * FROM(
+        SELECT b.*, a.ro_no FROM tbl_cart a , tbl_order b
+        WHERE
+        a.co_no = #{coNo}
+        AND a.ca_no = b.ca_no
+        ORDER BY b.or_create_dt desc
+        LIMIT 18446744073709551615)  AS A
+        GROUP BY A.ca_no
+        ) AS B,
+        tbl_reservation c,
+        tbl_room d,
+        tbl_place_file e
+        WHERE
+        c.or_no = B.or_no
+        AND B.ro_no = d.ro_no
+        AND d.ro_no = e.ro_no
+        AND e.rf_thumbnail = 1
+    </select>
+
+    <update id="modifyReservation">
+        update
+            tbl_reservation
+        <set>
+            re_dt = #{reDt},
+            re_modify_dt = now()
+        </set>
+        where re_no = #{reNo}
+    </update>
+
+    <select id="getExistReservation"
+        resultType="org.plateer.fittingroomclient.reservation.dto.ReservationDTO">
+        SELECT
+            tre.re_no,
+            tre.re_modify_dt,
+            tre.re_dt,
+            tre.re_time,
+            tre.re_price,
+            tre.re_status,
+            tre.re_create_dt,
+            tre.or_no
+        FROM
+            tbl_room tro
+                INNER JOIN tbl_cart tc ON tro.ro_no = tc.ro_no
+                INNER JOIN tbl_order tor ON tc.ca_no = tor.ca_no
+                INNER JOIN tbl_reservation tre ON tre.or_no = tor.or_no
+        WHERE
+                tre.re_status != '예약취소'
+            AND tre.re_dt = #{reservationDt}
+            AND tro.ro_no = #{roNo};
+    </select>
+
+    <insert id="insertReservation">
+        <selectKey keyProperty="reNo" resultType="long" order="AFTER">
+            SELECT LAST_INSERT_ID()
+        </selectKey>
+        INSERT INTO tbl_reservation (re_dt, re_time, re_price, re_status, re_create_dt, or_no)
+        VALUES(#{reDt}, #{reTime}, #{rePrice},#{reStatus} , now(), #{orNo})
+    </insert>
+</mapper>

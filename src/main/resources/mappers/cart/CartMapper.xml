@@ -37,6 +37,17 @@
         ORDER BY tca.ca_create_dt DESC
     </select>
 
+    <!--  장바구니 조회  -->
+    <select id="getCart"
+        resultType="org.plateer.fittingroomclient.cart.dto.CartDTO">
+        SELECT
+            *
+        FROM
+            tbl_cart
+        WHERE
+            ca_no = #{caNo}
+    </select>
+
     <!--장바구니 삭제-->
     <update id="deleteCart">
         UPDATE
@@ -87,5 +98,19 @@
         WHERE
             cp_no = #{cpNo}
     </update>
+
+    <select id="getReservationDetail" resultType="CartProductListDTO">
+        SELECT
+        a.cp_status
+        ,a.cp_create_dt
+        ,b.sp_size
+        ,c.pr_name
+        ,c.pr_price
+        ,c.pr_status
+        FROM tbl_cart_product a, tbl_sell_product b, tbl_product c
+        WHERE a.ca_no = #{caNo}
+        AND a.sp_no = b.sp_no
+        AND b.pr_no = c.pr_no
+    </select>
 
 </mapper>

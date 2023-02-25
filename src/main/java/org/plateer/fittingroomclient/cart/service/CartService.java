@@ -26,4 +26,6 @@ public interface CartService {
     List<CartProductDTO> getCartProducts(Long caNo);
 
     Long deleteCartProduct(Long cpNo);
+
+    CartDTO getCart(Long caNo);
 }
