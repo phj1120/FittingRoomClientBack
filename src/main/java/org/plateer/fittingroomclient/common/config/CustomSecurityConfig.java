@@ -65,7 +65,7 @@ public class CustomSecurityConfig {
         http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
 
         // URI 별 접근 권한 설정 @PreAuthorize 로 도 설정 가능
-        http.authorizeRequests().antMatchers("/api/room/**").permitAll();
+        http.authorizeRequests().antMatchers("/api/**").permitAll();
 //        http.authorizeRequests()
 //                .antMatchers("/api/place/list").hasRole("PLACE");
 //                .antMatchers("/auth/api/sample/ex2").hasRole("USER")

@@ -4,7 +4,9 @@ package org.plateer.fittingroomclient.product.controller;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.plateer.fittingroomclient.common.dto.PageResultDTO;
+import org.plateer.fittingroomclient.common.dto.ResultDTO;
 import org.plateer.fittingroomclient.product.dto.ProductDTO;
+import org.plateer.fittingroomclient.product.dto.ProductDetailDTO;
 import org.plateer.fittingroomclient.product.dto.ProductPageRequestDTO;
 import org.plateer.fittingroomclient.product.service.ProductService;
 import org.plateer.fittingroomclient.room.dto.RoomDTO;
@@ -28,5 +30,15 @@ public class ProductController {
     @GetMapping("list/{seNo}")
     public PageResultDTO<ProductDTO> getSellerProductList(ProductPageRequestDTO productPageRequestDTO) {
         return productService.getSellerProductList(productPageRequestDTO);
+    }
+
+    @GetMapping("detail/{prNo}")
+    public List<ProductDetailDTO> getProduct(ProductDetailDTO productDetailDTO) {
+        return productService.getProduct(productDetailDTO);
+    }
+
+    @GetMapping("option/{prNo}")
+    public List<ProductDetailDTO> getProductOption(ProductDetailDTO productDetailDTO) {
+        return productService.getProductOption(productDetailDTO);
     }
 }
