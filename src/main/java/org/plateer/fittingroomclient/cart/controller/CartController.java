@@ -6,6 +6,7 @@ import org.plateer.fittingroomclient.cart.dto.CartDTO;
 import org.plateer.fittingroomclient.cart.dto.CartProductDTO;
 import org.plateer.fittingroomclient.cart.service.CartService;
 import org.plateer.fittingroomclient.common.dto.ResultDTO;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;

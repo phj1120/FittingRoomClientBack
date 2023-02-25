@@ -8,6 +8,7 @@ import org.plateer.fittingroomclient.common.dto.ResultDTO;
 import org.plateer.fittingroomclient.inquiry.dto.InquiryDTO;
 import org.plateer.fittingroomclient.inquiry.dto.enums.InquiryStatus;
 import org.plateer.fittingroomclient.inquiry.service.InquiryService;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 /**
@@ -28,7 +29,7 @@ public class InquiryController {
     /**
      * 문의 등록
      **/
-    //    @PreAuthorize("hasRole('CONSUMER')")
+//    @PreAuthorize("hasRole('CONSUMER')")
     @PostMapping("/inquiry")
     public ResultDTO<Boolean> insertInquiry(InquiryDTO inquiryDTO) {
         Boolean result = inquiryService.insertInquiry(inquiryDTO);
@@ -51,7 +52,7 @@ public class InquiryController {
     /**
      * 문의 상세 조회
      **/
-    //    @PreAuthorize("hasRole('CONSUMER')")
+//    @PreAuthorize("hasRole('CONSUMER')")
     @GetMapping("/inquiry/{inNo}")
     public ResultDTO<InquiryDTO> getInquiryList(@PathVariable Long inNo) {
         InquiryDTO result = inquiryService.getInquiry(inNo);
@@ -62,7 +63,7 @@ public class InquiryController {
     /**
      * 문의 수정
      **/
-    //    @PreAuthorize("hasRole('CONSUMER')")
+//    @PreAuthorize("hasRole('CONSUMER')")
     @PutMapping("/inquiry/{inNo}")
     public ResultDTO<Long> updateInquiry(InquiryDTO inquiryDTO) {
         if (inquiryDTO.getInStatus() != InquiryStatus.WAITING) {
@@ -76,7 +77,7 @@ public class InquiryController {
     /**
      * 문의 삭제
      **/
-    //    @PreAuthorize("hasRole('CONSUMER')")
+//    @PreAuthorize("hasRole('CONSUMER')")
     @DeleteMapping("/inquiry/{inNo}")
     public ResultDTO<Long> deleteInquiry(@PathVariable Long inNo) {
         Long result = inquiryService.deleteInquiry(inNo);
