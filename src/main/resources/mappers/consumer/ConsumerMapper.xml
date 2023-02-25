@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.plateer.fittingroomclient.consumer.mapper.ConsumerMapper">
+    <select id="getConsumerByEmail"
+            resultType="org.plateer.fittingroomclient.consumer.dto.ConsumerDTO">
+        SELECT
+            co_no,
+            co_name,
+            co_nickname,
+            co_gender,
+            co_birth,
+            co_password,
+            co_email,
+            co_phone,
+            co_address,
+            co_detail_address,
+            co_status,
+            co_create_dt,
+            co_modify_dt,
+            co_is_sign_up
+        FROM
+            tbl_consumer
+        WHERE
+            co_email = #{email}
+    </select>
+
+    <insert id="socialLogin">
+        <selectKey keyProperty="coNo" resultType="long" order="AFTER">
+            SELECT LAST_INSERT_ID()
+        </selectKey>
+        INSERT INTO tbl_consumer(
+            co_password,
+            co_email,
+            co_is_sign_up,
+            co_status,
+            co_create_dt)
+        VALUES (
+            #{coPassword},
+            #{coEmail},
+            false,
+            true,
+            now()
+        )
+    </insert>
+
+    <update id="registerConsumer" >
+        UPDATE
+            tbl_consumer
+        SET
+            co_name = #{coName},
+            co_nickname = #{coNickname},
+            co_password = #{coPassword},
+            co_phone = #{coPhone},
+            co_birth = #{coBirth},
+            co_gender = #{coGender},
+            co_address = #{coAddress},
+            co_detail_address = #{coDetailAddress},
+            co_is_sign_up = true,
+            co_modify_dt = NOW()
+        WHERE
+            co_no = #{coNo}
+    </update>
+
+    <!--회원 정보 조회-->
+    <select id="getConsumerInfo" resultType="ConsumerDTO">
+        SELECT
+            *
+        FROM
+            tbl_consumer
+        WHERE
+            co_no = #{coNo}
+    </select>
+
+    <!--회원 정보 수정-->
+    <update id="updateConsumerInfo">
+        UPDATE
+            tbl_consumer
+        <set>
+            <if test="true">
+                co_modify_dt = now(),
+            </if>
+            <if test="coNickname != null">
+                co_nickname = #{coNickname},
+            </if>
+            <if test="coGender != null">
+                co_gender = #{coGender},
+            </if>
+            <if test="coBirth != null">
+                co_birth = #{coBirth},
+            </if>
+            <if test="coPhone != null">
+                co_phone = #{coPhone},
+            </if>
+            <if test="coAddress != null">
+                co_address = #{coAddress},
+            </if>
+            <if test="coDetailAddress != null">
+                co_detail_address = #{coDetailAddress},
+            </if>
+            <if test="coPassword != null">
+                co_password = #{coPassword},
+            </if>
+        </set>
+        WHERE
+            co_no = #{coNo}
+    </update>
+</mapper>

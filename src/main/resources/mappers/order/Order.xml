@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.plateer.fittingroomclient.order.mapper.OrderMapper">
+
+
+    <insert id="insertModifyReservation">
+        insert into tbl_order (or_status,or_create_dt,ca_no)
+        select
+        '변경' as or_status,
+        now() as or_create,
+        a.ca_no
+        from  tbl_order a, tbl_reservation b
+        where
+        b.re_no = #{reNo}
+        AND a.or_no = b.or_no
+    </insert>
+
+
+    <insert id="insertOrder">
+        <selectKey keyProperty="orNo" resultType="long" order="AFTER">
+            SELECT LAST_INSERT_ID()
+        </selectKey>
+        INSERT INTO tbl_order (or_status, or_create_dt, ca_no)
+        VALUES (#{orStatus}, now(), #{caNo});
+    </insert>
+
+    <select id="getOrderByCaNo"
+        resultType="org.plateer.fittingroomclient.order.order.OrderDTO">
+        SELECT
+            *
+        FROM
+            tbl_order
+        WHERE
+            ca_no = #{caNo}
+    </select>
+</mapper>
