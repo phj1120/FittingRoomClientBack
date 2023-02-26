@@ -10,6 +10,10 @@
             tbl_cart(ca_create_dt, ro_no, co_no)
         VALUES
             (now(), #{roNo}, #{coNo})
+
+        <selectKey keyProperty="caNo" resultType="Long" order="AFTER">
+            SELECT LAST_INSERT_ID()
+        </selectKey>
     </insert>
 
     <!--장바구니 목록 조회-->
@@ -120,5 +124,10 @@
         WHERE
         ca_no = #{caNo}
     </update>
+
+    <select id="checkCart" resultType="int">
+        SELECT EXISTS ( SELECT 1 FROM tbl_cart WHERE ro_no = #{ roNo } AND co_no = #{ coNo } )
+    </select>
+
 
 </mapper>

@@ -8,6 +8,7 @@ import org.plateer.fittingroomclient.common.dto.ResultDTO;
 import org.plateer.fittingroomclient.room.dto.RoomDTO;
 import org.plateer.fittingroomclient.room.dto.RoomPageRequestDTO;
 import org.plateer.fittingroomclient.room.service.RoomService;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;

@@ -45,7 +45,10 @@ public class CartServiceImpl implements CartService {
 
     @Override
     public Long insertCartProduct(CartProductDTO cartProductDTO) {
+
+
         cartMapper.insertCartProduct(cartProductDTO);
+
         return cartProductDTO.getCaNo();
     }
 

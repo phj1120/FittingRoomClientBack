@@ -67,8 +67,33 @@
         where re_no = #{reNo}
     </update>
 
-    <select id="getAbleReservation"
-        resultType="Long">
-
+    <select id="getExistReservation"
+        resultType="org.plateer.fittingroomclient.reservation.dto.ReservationDTO">
+        SELECT
+            tre.re_no,
+            tre.re_modify_dt,
+            tre.re_dt,
+            tre.re_time,
+            tre.re_price,
+            tre.re_status,
+            tre.re_create_dt,
+            tre.or_no
+        FROM
+            tbl_room tro
+                INNER JOIN tbl_cart tc ON tro.ro_no = tc.ro_no
+                INNER JOIN tbl_order tor ON tc.ca_no = tor.ca_no
+                INNER JOIN tbl_reservation tre ON tre.or_no = tor.or_no
+        WHERE
+                tre.re_status != '예약취소'
+            AND tre.re_dt = #{reservationDt}
+            AND tro.ro_no = #{roNo};
     </select>
+
+    <insert id="insertReservation">
+        <selectKey keyProperty="reNo" resultType="long" order="AFTER">
+            SELECT LAST_INSERT_ID()
+        </selectKey>
+        INSERT INTO tbl_reservation (re_dt, re_time, re_price, re_status, re_create_dt, or_no)
+        VALUES(#{reDt}, #{reTime}, #{rePrice},#{reStatus} , now(), #{orNo})
+    </insert>
 </mapper>

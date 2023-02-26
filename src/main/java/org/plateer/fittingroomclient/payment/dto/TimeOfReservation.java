@@ -9,7 +9,7 @@ import java.time.LocalDate;
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor
-public class AbleReservationDTO {
+public class TimeOfReservation {
     private Long roNo;
     private LocalDate reservationDt;
 }

@@ -78,4 +78,38 @@
         LIMIT
             0, #{skip}
     </select>
+
+    <select id="getProduct" resultType="ProductDetailDTO">
+        SELECT
+            ( SELECT S1.ro_no FROM tbl_place_member S2 INNER JOIN tbl_room S1 ON S1.ro_no = S2.ro_no INNER JOIN tbl_seller S3 ON S3.pm_no = S2.pm_no WHERE S3.se_no = A.se_no ) AS ro_no,
+            A.pr_no,
+            A.pr_brand,
+            A.pr_name,
+            A.pr_price,
+            A.pr_status,
+            A.se_no,
+            B.prc_no,
+            B.prc_path_name,
+            C.prf_no,
+            C.prf_uuid,
+            C.prf_type,
+            C.prf_status
+        FROM
+            tbl_product A
+            LEFT JOIN tbl_product_category B ON A.prc_no = B.prc_no
+            LEFT JOIN tbl_product_file C ON A.pr_no = C.pr_no
+        WHERE
+            A.pr_no = #{ prNo }
+    </select>
+
+    <select id="getProductOption" resultType="ProductDetailDTO">
+        SELECT
+            A.sp_no,
+            A.sp_size,
+            A.sp_status
+        FROM
+            tbl_sell_product A
+        WHERE
+            A.pr_no = #{ prNo }
+    </select>
 </mapper>
