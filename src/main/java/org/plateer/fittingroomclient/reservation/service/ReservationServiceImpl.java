@@ -13,6 +13,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -50,7 +51,8 @@ public class ReservationServiceImpl implements ReservationService {
 
         // 해당 장소의 예약 가능한 시간 확인
         List<ReservationDTO> existReservation = reservationMapper.getExistReservation(timeOfReservation);
-        List<Long> ableSchedules = List.of(1L, 2L, 3L, 4L, 5L, 6L, 7L, 8L, 9L);
+        List<Long> ableSchedules = new ArrayList<>(List.of(1L, 2L, 3L, 4L, 5L, 6L, 7L, 8L, 9L));
+
         existReservation.forEach((reservationDTO -> {
             Long reTime = reservationDTO.getReTime();
             // 존재하는 일정 삭제
