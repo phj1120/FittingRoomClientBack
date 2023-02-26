@@ -22,7 +22,4 @@ public interface ProductMapper {
 
     // 특정 상품의 옵션 리스트
     List<ProductDetailDTO> getProductOption(ProductDetailDTO productDetailDTO);
-
-    // 특정 상품의 모든 정보 ( 판매자 리스트 페이지에서 특정 상품 클릭 후 메뉴 )
-
 }
