@@ -53,6 +53,6 @@ public class ProductServiceImpl implements ProductService {
         }
 
 //        CartProductDTO cartProductDTO = CartProductDTO.builder().cpStatus(true).caNo(cartDTO.getCaNo()).spNo(productCartDTO.getSpList()).build();
-        cartMapper.insertCartProduct(cartProductDTO);
+//        cartMapper.insertCartProduct(cartProductDTO);
     }
 }
