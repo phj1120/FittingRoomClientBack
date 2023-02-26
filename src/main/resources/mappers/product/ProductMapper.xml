@@ -81,6 +81,7 @@
 
     <select id="getProduct" resultType="ProductDetailDTO">
         SELECT
+            ( SELECT S1.ro_no FROM tbl_place_member S2 INNER JOIN tbl_room S1 ON S1.ro_no = S2.ro_no INNER JOIN tbl_seller S3 ON S3.pm_no = S2.pm_no WHERE S3.se_no = A.se_no ) AS ro_no,
             A.pr_no,
             A.pr_brand,
             A.pr_name,

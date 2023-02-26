@@ -12,7 +12,8 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class ProductDetailDTO {
-    // 상품, 판매자, 카테고리, 파일, 옵션 번호
+    // 장소, 상품, 판매자, 카테고리, 파일, 옵션 번호
+    private Long roNo;
     private Long prNo;
     private Long seNo;
     private Long prcNo;
