@@ -17,17 +17,11 @@ public class ImageController {
     private final ImageUtil imageUtil;
 
     // 이미지 조회
-    @GetMapping(value = "/image/product/{imagePath}", produces = {MediaType.IMAGE_JPEG_VALUE})
-    public Resource getProductImage(@PathVariable("imagePath") String imagePath) {
-        Resource file = imageUtil.readProductImage(imagePath);
+    @GetMapping(value = "/image/{imagePath}", produces = {MediaType.IMAGE_JPEG_VALUE})
+    public Resource getImage(@PathVariable("imagePath") String imagePath) {
+        Resource file = imageUtil.readImage(imagePath);
 
         return file;
     }
 
-    @GetMapping(value = "/image/room/{imagePath}", produces = {MediaType.IMAGE_JPEG_VALUE})
-    public Resource getRoomImage(@PathVariable("imagePath") String imagePath) {
-        Resource file = imageUtil.readRoomImage(imagePath);
-
-        return file;
-    }
 }
