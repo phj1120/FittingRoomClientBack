@@ -3,11 +3,14 @@ package org.plateer.fittingroomclient.payment.controller;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.plateer.fittingroomclient.common.dto.ResultDTO;
-import org.plateer.fittingroomclient.payment.dto.TimeOfReservation;
+import org.plateer.fittingroomclient.common.security.dto.CustomUserDetail;
 import org.plateer.fittingroomclient.payment.dto.PaymentApproveDTO;
 import org.plateer.fittingroomclient.payment.dto.PaymentInfoDTO;
+import org.plateer.fittingroomclient.payment.dto.TimeOfReservation;
 import org.plateer.fittingroomclient.payment.service.PaymentService;
 import org.plateer.fittingroomclient.reservation.service.ReservationService;
+import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.*;
 
 @Log4j2
@@ -18,9 +21,11 @@ public class PaymentController {
     private final PaymentService paymentService;
     private final ReservationService reservationService;
 
-    // TODO 본인의 장바구니만 접근 가능하도록 수정
+    @PreAuthorize("#customUserDetail != null && @paymentChecker.hasPermission(#customUserDetail.userNo, #caNo)")
     @GetMapping("/api/payment/{caNo}")
-    public ResultDTO<PaymentInfoDTO> getPaymentDetails(@PathVariable Long caNo) {
+    public ResultDTO<PaymentInfoDTO> getPaymentDetails(
+            @AuthenticationPrincipal CustomUserDetail customUserDetail,
+            @PathVariable Long caNo) {
         PaymentInfoDTO paymentDetails = paymentService.getPaymentDetails(caNo);
 
         return ResultDTO.<PaymentInfoDTO>builder()
@@ -28,9 +33,11 @@ public class PaymentController {
                 .build();
     }
 
-    // TODO 본인의 장바구니만 결제 가능하도록 수정
+    @PreAuthorize("#customUserDetail != null && @paymentChecker.hasPermission(#customUserDetail.userNo, #paymentApproveDTO.partner_order_id)")
     @PostMapping("/api/payment/approve")
-    public ResultDTO<Boolean> paymentApprove(@RequestBody PaymentApproveDTO paymentApproveDTO) {
+    public ResultDTO<Boolean> paymentApprove(
+            @AuthenticationPrincipal CustomUserDetail customUserDetail,
+            @RequestBody PaymentApproveDTO paymentApproveDTO) {
         paymentService.paymentApprove(paymentApproveDTO);
 
         return ResultDTO.<Boolean>builder()
@@ -38,8 +45,9 @@ public class PaymentController {
                 .build();
     }
 
+    @PreAuthorize("hasRole('CONSUMER')")
     @GetMapping("/api/payment/ableReservation")
     public void ableReservation(TimeOfReservation reservationRequest) {
-        reservationService.getAbleTimeOfReservation(reservationRequest); // TODO 기능 구현 미완료
+        reservationService.getAbleTimeOfReservation(reservationRequest);
     }
 }
