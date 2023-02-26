@@ -3,7 +3,11 @@ package org.plateer.fittingroomclient.product.service;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
+import org.plateer.fittingroomclient.cart.dto.CartDTO;
+import org.plateer.fittingroomclient.cart.dto.CartProductDTO;
+import org.plateer.fittingroomclient.cart.mapper.CartMapper;
 import org.plateer.fittingroomclient.common.dto.PageResultDTO;
+import org.plateer.fittingroomclient.product.dto.ProductCartDTO;
 import org.plateer.fittingroomclient.product.dto.ProductDTO;
 import org.plateer.fittingroomclient.product.dto.ProductDetailDTO;
 import org.plateer.fittingroomclient.product.dto.ProductPageRequestDTO;
@@ -20,6 +24,7 @@ import java.util.List;
 @Transactional
 public class ProductServiceImpl implements ProductService {
     private final ProductMapper productMapper;
+    private final CartMapper cartMapper;
 
 
     @Override
@@ -38,5 +43,16 @@ public class ProductServiceImpl implements ProductService {
     @Override
     public List<ProductDetailDTO> getProductOption(ProductDetailDTO productDetailDTO) {
         return productMapper.getProductOption(productDetailDTO);
+    }
+
+    @Override
+    public void insertProductCart(ProductCartDTO productCartDTO) {
+        CartDTO cartDTO = CartDTO.builder().roNo(productCartDTO.getRoNo()).coNo(productCartDTO.getCoNo()).build();
+        if ( cartMapper.checkCart(cartDTO) == 0 ) {
+            cartMapper.insertCart(cartDTO);
+        }
+
+//        CartProductDTO cartProductDTO = CartProductDTO.builder().cpStatus(true).caNo(cartDTO.getCaNo()).spNo(productCartDTO.getSpList()).build();
+        cartMapper.insertCartProduct(cartProductDTO);
     }
 }
