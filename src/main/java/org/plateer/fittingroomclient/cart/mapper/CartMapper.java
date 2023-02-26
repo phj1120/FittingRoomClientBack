@@ -28,10 +28,12 @@ public interface CartMapper {
 
     Long deleteCartProduct(Long cpNo);
     
-    List<CartProductListDTO> getReservationDetail(Long caNo);
+    List<CartProductListDTO> getCartItemList(Long caNo);
 
     CartDTO getCart(Long caNo);
 
+
+    Long modifyCartItem(Long caNo);
 
     int checkCart(CartDTO cartDTO);
 }

@@ -11,7 +11,7 @@
 
     </insert>
 
-    <select id="getReservationList" resultType="getReservationListDTO">
+    <select id="getReservationList" resultType="GetReservationListDTO">
         SELECT B.or_no, B.or_status, B.ca_no,
         B.ro_no, c.re_no, c.re_dt, c.re_price, d.ro_name, d.ro_address, d.ro_detail_address
         ,e.rf_name
@@ -36,12 +36,33 @@
         AND e.rf_thumbnail = 1
     </select>
 
+    <select id="getReservationDetail" resultType="GetReservationItemDTO">
+        SELECT a.or_status, a.ca_no, b.re_dt,b.re_time, b.re_price ,b.re_no , d.ro_name, d.ro_address, d.ro_detail_address
+        FROM tbl_order a, tbl_reservation b , tbl_cart c, tbl_room d
+        WHERE a.or_no = #{orNo}
+        AND a.or_no = b.or_no
+        AND a.ca_no = c.ca_no
+        AND c.ro_no = d.ro_no
+    </select>
+
     <update id="modifyReservation">
         update
             tbl_reservation
         <set>
-            re_dt = #{reDt},
-            re_modify_dt = now()
+            re_status = '결제완료',
+            re_modify_dt = now(),
+            or_no = #{orNo}
+        </set>
+        where re_no = #{reNo}
+    </update>
+
+    <update id="cancleReservation">
+        update
+        tbl_reservation
+        <set>
+            re_status = '예약취소',
+            re_modify_dt = now(),
+            or_no = #{orNo}
         </set>
         where re_no = #{reNo}
     </update>
