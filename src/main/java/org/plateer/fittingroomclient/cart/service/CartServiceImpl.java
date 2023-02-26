@@ -4,6 +4,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.plateer.fittingroomclient.cart.dto.CartDTO;
 import org.plateer.fittingroomclient.cart.dto.CartProductDTO;
+import org.plateer.fittingroomclient.cart.dto.CartProductListDTO;
 import org.plateer.fittingroomclient.cart.mapper.CartMapper;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -67,5 +68,10 @@ public class CartServiceImpl implements CartService {
         }
 
         return cartDTO;
+    }
+
+    @Override
+    public List<CartProductListDTO> getCartItemList(Long caNo) {
+        return cartMapper.getCartItemList(caNo);
     }
 }

@@ -97,9 +97,10 @@
             cp_no = #{cpNo}
     </update>
 
-    <select id="getReservationDetail" resultType="CartProductListDTO">
+    <select id="getCartItemList" resultType="CartProductListDTO">
         SELECT
-        a.cp_status
+        a.cp_no
+        ,a.cp_status
         ,a.cp_create_dt
         ,b.sp_size
         ,c.pr_name
@@ -110,5 +111,14 @@
         AND a.sp_no = b.sp_no
         AND b.pr_no = c.pr_no
     </select>
+
+    <update id="modifyCartItem">
+        UPDATE
+        tbl_cart_product
+        SET
+        cp_status = 0
+        WHERE
+        ca_no = #{caNo}
+    </update>
 
 </mapper>

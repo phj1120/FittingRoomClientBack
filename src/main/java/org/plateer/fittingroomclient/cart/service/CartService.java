@@ -2,6 +2,8 @@ package org.plateer.fittingroomclient.cart.service;
 
 import org.plateer.fittingroomclient.cart.dto.CartDTO;
 import org.plateer.fittingroomclient.cart.dto.CartProductDTO;
+import org.plateer.fittingroomclient.cart.dto.CartProductListDTO;
+import org.springframework.web.bind.annotation.PathVariable;
 
 import java.util.List;
 
@@ -28,4 +30,7 @@ public interface CartService {
     Long deleteCartProduct(Long cpNo);
 
     CartDTO getCart(Long caNo);
+
+    List<CartProductListDTO> getCartItemList(@PathVariable Long caNo);
+
 }

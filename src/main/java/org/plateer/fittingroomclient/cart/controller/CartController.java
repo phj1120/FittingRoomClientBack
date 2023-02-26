@@ -4,6 +4,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.plateer.fittingroomclient.cart.dto.CartDTO;
 import org.plateer.fittingroomclient.cart.dto.CartProductDTO;
+import org.plateer.fittingroomclient.cart.dto.CartProductListDTO;
 import org.plateer.fittingroomclient.cart.service.CartService;
 import org.plateer.fittingroomclient.common.dto.ResultDTO;
 import org.springframework.web.bind.annotation.*;
@@ -95,4 +96,13 @@ public class CartController {
 
         return ResultDTO.<Long>builder().data(result).build();
     }
+
+    @GetMapping("/detail/{id}")
+    public List<CartProductListDTO> getCartItemList(@PathVariable("id") Long caNo){
+
+
+
+        return cartService.getCartItemList(caNo);
+    }
+
 }
