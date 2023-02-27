@@ -29,7 +29,7 @@ public class InquiryController {
     /**
      * 문의 등록
      **/
-//    @PreAuthorize("hasRole('CONSUMER')")
+    @PreAuthorize("hasRole('CONSUMER')")
     @PostMapping("/inquiry")
     public ResultDTO<Boolean> insertInquiry(InquiryDTO inquiryDTO) {
         Boolean result = inquiryService.insertInquiry(inquiryDTO);
@@ -40,7 +40,7 @@ public class InquiryController {
     /**
      * 문의 목록 조회
      **/
-//    @PreAuthorize("hasRole('CONSUMER')")
+    @PreAuthorize("hasRole('CONSUMER')")
     @GetMapping("/inquiry/list")
     public PageResultDTO<InquiryDTO> getInquiryList(Long coNo, PageRequestDTO pageRequestDTO) {
         coNo = 1L;
@@ -52,7 +52,7 @@ public class InquiryController {
     /**
      * 문의 상세 조회
      **/
-//    @PreAuthorize("hasRole('CONSUMER')")
+    @PreAuthorize("hasRole('CONSUMER')")
     @GetMapping("/inquiry/{inNo}")
     public ResultDTO<InquiryDTO> getInquiryList(@PathVariable Long inNo) {
         InquiryDTO result = inquiryService.getInquiry(inNo);
@@ -63,7 +63,7 @@ public class InquiryController {
     /**
      * 문의 수정
      **/
-//    @PreAuthorize("hasRole('CONSUMER')")
+    @PreAuthorize("hasRole('CONSUMER')")
     @PutMapping("/inquiry/{inNo}")
     public ResultDTO<Long> updateInquiry(InquiryDTO inquiryDTO) {
         if (inquiryDTO.getInStatus() != InquiryStatus.WAITING) {
@@ -77,7 +77,7 @@ public class InquiryController {
     /**
      * 문의 삭제
      **/
-//    @PreAuthorize("hasRole('CONSUMER')")
+    @PreAuthorize("hasRole('CONSUMER')")
     @DeleteMapping("/inquiry/{inNo}")
     public ResultDTO<Long> deleteInquiry(@PathVariable Long inNo) {
         Long result = inquiryService.deleteInquiry(inNo);

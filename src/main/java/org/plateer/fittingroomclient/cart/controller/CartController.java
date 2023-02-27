@@ -30,7 +30,7 @@ public class CartController {
     /**
      * 장바구니 생성
      **/
-//    @PreAuthorize("hasRole('CONSUMER')")
+    @PreAuthorize("hasRole('CONSUMER')")
     @PostMapping("")
     public ResultDTO<Long> insertCart(CartDTO cartDTO) {
         Long result = cartService.insertCart(cartDTO);
@@ -41,7 +41,7 @@ public class CartController {
     /**
      * 장바구니 조회
      **/
-//    @PreAuthorize("hasRole('CONSUMER')")
+    @PreAuthorize("hasRole('CONSUMER')")
     @GetMapping("/{coNo}")
     public ResultDTO<List<CartDTO>> getCartList(@PathVariable Long coNo) {
 
@@ -53,7 +53,7 @@ public class CartController {
     /**
      * 장바구니 삭제
      **/
-//    @PreAuthorize("hasRole('CONSUMER')")
+    @PreAuthorize("hasRole('CONSUMER')")
     @DeleteMapping("/{caNo}")
     public ResultDTO<Long> deleteCart(@PathVariable Long caNo) {
 
@@ -65,7 +65,7 @@ public class CartController {
     /**
      * 장바구니 상품 추가
      **/
-//    @PreAuthorize("hasRole('CONSUMER')")
+    @PreAuthorize("hasRole('CONSUMER')")
     @PostMapping("/product")
     public ResultDTO<Long> insertCartProduct(CartProductDTO cartProductDTO) {
 
@@ -77,7 +77,7 @@ public class CartController {
     /**
      * 장바구니 상품 조회
      **/
-//    @PreAuthorize("hasRole('CONSUMER')")
+    @PreAuthorize("hasRole('CONSUMER')")
     @GetMapping("/products/{caNo}")
     public ResultDTO<List<CartProductDTO>> getCartProducts(@PathVariable Long caNo) {
 
@@ -89,7 +89,7 @@ public class CartController {
     /**
      * 장바구니 상품 삭제
      **/
-//    @PreAuthorize("hasRole('CONSUMER')")
+    @PreAuthorize("hasRole('CONSUMER')")
     @DeleteMapping("/product/{cpNo}")
     public ResultDTO<Long> deleteCartProduct(@PathVariable Long cpNo) {
 
@@ -99,9 +99,7 @@ public class CartController {
     }
 
     @GetMapping("/detail/{id}")
-    public List<CartProductListDTO> getCartItemList(@PathVariable("id") Long caNo){
-
-
+    public List<CartProductListDTO> getCartItemList(@PathVariable("id") Long caNo) {
 
         return cartService.getCartItemList(caNo);
     }
