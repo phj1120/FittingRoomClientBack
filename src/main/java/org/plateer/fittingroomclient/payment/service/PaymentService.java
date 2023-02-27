@@ -49,7 +49,7 @@ public class PaymentService {
         Long caNo = paymentApproveDTO.getPartner_order_id(); // 장바구니 아이디
         Long coNo = paymentApproveDTO.getPartner_user_id();  // 구매자 아이디
 
-        OrderDTO orderDTO = new OrderDTO("에약중", caNo);
+        OrderDTO orderDTO = new OrderDTO("예약중", caNo);
         Long orNo = orderService.insertOrder(orderDTO);
 
         // reservation 테이블에 예약 정보 저장

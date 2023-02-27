@@ -97,7 +97,7 @@ public class CartController {
 
         return ResultDTO.<Long>builder().data(result).build();
     }
-
+    @PreAuthorize("hasRole('CONSUMER')")
     @GetMapping("/detail/{id}")
     public List<CartProductListDTO> getCartItemList(@PathVariable("id") Long caNo){
 
