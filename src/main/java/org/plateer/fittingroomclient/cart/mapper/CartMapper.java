@@ -15,7 +15,6 @@ import java.util.List;
  **/
 
 public interface CartMapper {
-
     List<CartDTO> getCartList(Long coNo);
 
     int insertCart(CartDTO cartDTO);
