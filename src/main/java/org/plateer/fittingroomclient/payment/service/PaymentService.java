@@ -57,6 +57,9 @@ public class PaymentService {
         Long reTime = paymentApproveDTO.getRe_time();
         Long payAmount = paymentApproveResponseDTO.getAmount().getTotal();
 
+        // 장바구니 상품 상태 변경
+        Long count = cartService.deleteCart(caNo);
+
         ReservationDTO reservationDTO = new ReservationDTO(reDt, reTime, payAmount, "결제완료", orNo);
         Long reNo = reservationService.insertReservation(reservationDTO);
     }

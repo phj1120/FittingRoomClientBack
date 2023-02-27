@@ -50,9 +50,11 @@ public class ProductServiceImpl implements ProductService {
         CartDTO cartDTO = CartDTO.builder().roNo(productCartDTO.getRoNo()).coNo(productCartDTO.getCoNo()).build();
         if ( cartMapper.checkCart(cartDTO) == 0 ) {
             cartMapper.insertCart(cartDTO);
+        } else {
+            cartDTO.setCaNo(cartMapper.getCartInfo(cartDTO));
         }
 
-//        CartProductDTO cartProductDTO = CartProductDTO.builder().cpStatus(true).caNo(cartDTO.getCaNo()).spNo(productCartDTO.getSpList()).build();
-//        cartMapper.insertCartProduct(cartProductDTO);
+        CartProductDTO cartProductDTO = CartProductDTO.builder().cpStatus(true).caNo(cartDTO.getCaNo()).spList(List.of(productCartDTO.getSpList())).build();
+        cartMapper.insertProductCartList(cartProductDTO, cartProductDTO.getSpList());
     }
 }
