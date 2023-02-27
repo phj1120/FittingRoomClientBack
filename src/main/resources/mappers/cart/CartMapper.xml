@@ -52,7 +52,7 @@
             ca_no = #{caNo}
     </select>
 
-    <select id="getCartInfo" resultType="CartDTO">
+    <select id="getCartInfo" resultType="Long">
         SELECT
             ca_no
         FROM
