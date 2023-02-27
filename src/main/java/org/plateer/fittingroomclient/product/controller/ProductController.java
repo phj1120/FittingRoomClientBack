@@ -45,9 +45,11 @@ public class ProductController {
     }
 
     @PostMapping("cart")
-    public ResultDTO<Long> insertProductCart(@RequestBody ProductCartDTO productCartDTO) {
+    public ResultDTO<Long> insertProductCart(@RequestBody ProductCartDTO productCartDTO, @AuthenticationPrincipal CustomUserDetail user) {
+        log.info("########################");
+        log.info(user.getUserNo());
+        log.info("########################");
         productService.insertProductCart(productCartDTO);
-
         return ResultDTO.<Long>builder().data(1L).build();
     }
 }
