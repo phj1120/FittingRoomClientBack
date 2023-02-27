@@ -2,9 +2,9 @@ package org.plateer.fittingroomclient.inquiry.service;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
+import org.plateer.fittingroomclient.common.dto.PageRequestDTO;
 import org.plateer.fittingroomclient.common.dto.PageResultDTO;
 import org.plateer.fittingroomclient.inquiry.dto.InquiryDTO;
-import org.plateer.fittingroomclient.inquiry.dto.InquiryPageSearchRequestDTO;
 import org.plateer.fittingroomclient.inquiry.dto.enums.InquiryType;
 import org.plateer.fittingroomclient.inquiry.mapper.InquiryMapper;
 import org.springframework.stereotype.Service;
@@ -39,10 +39,10 @@ public class InquiryServiceImpl implements InquiryService{
     }
 
     @Override
-    public PageResultDTO<InquiryDTO> getInquiryList(Long coNo, InquiryPageSearchRequestDTO inquiryPageSearchRequestDTO) {
-        List<InquiryDTO> inquiryList = inquiryMapper.getInquiryList(coNo, inquiryPageSearchRequestDTO);
-        int total = inquiryMapper.getInquiryListCount(coNo, inquiryPageSearchRequestDTO);
-        PageResultDTO<InquiryDTO> result = PageResultDTO.<InquiryDTO>withAll().pageRequestDTO(inquiryPageSearchRequestDTO)
+    public PageResultDTO<InquiryDTO> getInquiryList(Long coNo, PageRequestDTO pageRequestDTO) {
+        List<InquiryDTO> inquiryList = inquiryMapper.getInquiryList(coNo, pageRequestDTO);
+        int total = inquiryMapper.getInquiryListCount(coNo, pageRequestDTO);
+        PageResultDTO<InquiryDTO> result = PageResultDTO.<InquiryDTO>withAll().pageRequestDTO(pageRequestDTO)
                 .dtoList(inquiryList)
                 .total(total)
                 .build();
