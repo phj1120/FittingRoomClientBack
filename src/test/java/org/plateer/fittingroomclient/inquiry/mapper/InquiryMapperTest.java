@@ -2,18 +2,15 @@ package org.plateer.fittingroomclient.inquiry.mapper;
 
 import lombok.extern.log4j.Log4j2;
 import org.junit.jupiter.api.Test;
+import org.plateer.fittingroomclient.common.dto.PageRequestDTO;
 import org.plateer.fittingroomclient.inquiry.dto.InquiryDTO;
-import org.plateer.fittingroomclient.inquiry.dto.InquiryPageSearchRequestDTO;
 import org.plateer.fittingroomclient.inquiry.dto.enums.InquiryStatus;
 import org.plateer.fittingroomclient.inquiry.dto.enums.InquiryType;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.annotation.Rollback;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 /**
  * Q&A 관련 기능 Mapper 테스트
@@ -32,17 +29,17 @@ class InquiryMapperTest {
 
     @Test
     void getInquiryList() {
-        InquiryPageSearchRequestDTO inquiryPageSearchRequestDTO
-                = new InquiryPageSearchRequestDTO(1, 10, "문의");
-        List<InquiryDTO> result = inquiryMapper.getInquiryList(1L, inquiryPageSearchRequestDTO);
+        PageRequestDTO pageRequestDTO
+                = new PageRequestDTO(1, 10);
+        List<InquiryDTO> result = inquiryMapper.getInquiryList(1L, pageRequestDTO);
         log.info(result);
     }
 
     @Test
     void getInquiryListCount() {
-        InquiryPageSearchRequestDTO inquiryPageSearchRequestDTO
-                = new InquiryPageSearchRequestDTO(1, 10, "문의");
-        int result = inquiryMapper.getInquiryListCount(1L, inquiryPageSearchRequestDTO);
+        PageRequestDTO pageRequestDTO
+                = new PageRequestDTO(1, 10);
+        int result = inquiryMapper.getInquiryListCount(1L, pageRequestDTO);
         log.info(result);
     }
 
