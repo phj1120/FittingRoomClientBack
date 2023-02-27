@@ -51,6 +51,24 @@
             ca_no = #{caNo}
     </select>
 
+    <select id="getCartInfo" resultType="CartDTO">
+        SELECT
+            ca_no
+        FROM
+            tbl_cart
+        WHERE
+                ro_no = #{roNo}
+            AND co_no = #{coNo}
+    </select>
+
+    <insert id="insertProductCartList">
+        INSERT INTO tbl_cart_product(cp_status, cp_create_dt, ca_no, sp_no)
+        VALUES
+            <foreach collection="spList" item="sp"  separator=",">
+                (#{cartProductDTO.cpStatus}, now(), #{cartProductDTO.caNo}, #{sp})
+            </foreach>
+    </insert>
+
     <!--장바구니 삭제-->
     <update id="deleteCart">
         UPDATE

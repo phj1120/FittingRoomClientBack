@@ -6,6 +6,8 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 @Data
 @Builder
@@ -33,5 +35,7 @@ public class CartProductDTO {
     private Long prPrice; // 상품 가격
 
     private String thumbnail; // 상품 썸네일
+
+    private List<Long> spList = new ArrayList<>();
 
 }
