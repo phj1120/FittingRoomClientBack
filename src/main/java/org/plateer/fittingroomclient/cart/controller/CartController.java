@@ -7,7 +7,9 @@ import org.plateer.fittingroomclient.cart.dto.CartProductDTO;
 import org.plateer.fittingroomclient.cart.dto.CartProductListDTO;
 import org.plateer.fittingroomclient.cart.service.CartService;
 import org.plateer.fittingroomclient.common.dto.ResultDTO;
+import org.plateer.fittingroomclient.common.security.dto.CustomUserDetail;
 import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -42,11 +44,9 @@ public class CartController {
      * 장바구니 조회
      **/
     @PreAuthorize("hasRole('CONSUMER')")
-    @GetMapping("/{coNo}")
-    public ResultDTO<List<CartDTO>> getCartList(@PathVariable Long coNo) {
-
-        List<CartDTO> result = cartService.getCartList(coNo);
-
+    @GetMapping
+    public ResultDTO<List<CartDTO>> getCartList(@AuthenticationPrincipal CustomUserDetail customUserDetail) {
+        List<CartDTO> result = cartService.getCartList(customUserDetail.getUserNo());
         return ResultDTO.<List<CartDTO>>builder().data(result).build();
     }
 
@@ -100,7 +100,6 @@ public class CartController {
 
     @GetMapping("/detail/{id}")
     public List<CartProductListDTO> getCartItemList(@PathVariable("id") Long caNo) {
-
         return cartService.getCartItemList(caNo);
     }
 
