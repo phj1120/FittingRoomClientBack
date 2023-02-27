@@ -13,6 +13,8 @@ import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @Log4j2
 @RestController
 @RequestMapping
@@ -47,7 +49,9 @@ public class PaymentController {
 
     @PreAuthorize("hasRole('CONSUMER')")
     @GetMapping("/api/payment/ableReservation")
-    public void ableReservation(TimeOfReservation reservationRequest) {
-        reservationService.getAbleTimeOfReservation(reservationRequest);
+    public ResultDTO<List> ableReservation(TimeOfReservation reservationRequest) {
+        List<Long> ableTimeOfReservation = reservationService.getAbleTimeOfReservation(reservationRequest);
+
+        return ResultDTO.<List>builder().data(ableTimeOfReservation).build();
     }
 }

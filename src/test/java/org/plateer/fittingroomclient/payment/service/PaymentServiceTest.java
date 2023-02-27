@@ -4,12 +4,15 @@ import org.junit.jupiter.api.Test;
 import org.plateer.fittingroomclient.cart.dto.CartDTO;
 import org.plateer.fittingroomclient.cart.service.CartService;
 import org.plateer.fittingroomclient.payment.dto.PaymentInfoDTO;
+import org.plateer.fittingroomclient.payment.dto.TimeOfReservation;
+import org.plateer.fittingroomclient.reservation.service.ReservationService;
 import org.plateer.fittingroomclient.room.dto.RoomDTO;
 import org.plateer.fittingroomclient.room.service.RoomService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import static org.junit.jupiter.api.Assertions.*;
+import java.time.LocalDate;
+import java.util.List;
 
 @SpringBootTest
 class PaymentServiceTest {
@@ -22,6 +25,9 @@ class PaymentServiceTest {
 
     @Autowired
     PaymentService paymentService;
+
+    @Autowired
+    ReservationService reservationService;
 
     @Test
     void getCart() {
@@ -42,5 +48,13 @@ class PaymentServiceTest {
         PaymentInfoDTO paymentDetails = paymentService.getPaymentDetails(4L);
 
         System.out.println(paymentDetails);
+    }
+
+    @Test
+    void getAbleTimeOfReservation() {
+        TimeOfReservation timeOfReservation = new TimeOfReservation(1L, LocalDate.of(2023, 3, 1));
+        List<Long> ableTimeOfReservation = reservationService.getAbleTimeOfReservation(timeOfReservation);
+
+        System.out.println(ableTimeOfReservation);
     }
 }
