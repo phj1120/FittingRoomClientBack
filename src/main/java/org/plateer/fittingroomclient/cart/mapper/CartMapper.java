@@ -3,6 +3,7 @@ package org.plateer.fittingroomclient.cart.mapper;
 import org.plateer.fittingroomclient.cart.dto.CartDTO;
 import org.plateer.fittingroomclient.cart.dto.CartProductDTO;
 import org.plateer.fittingroomclient.cart.dto.CartProductListDTO;
+import org.plateer.fittingroomclient.product.dto.ProductCartDTO;
 
 import java.util.List;
 
@@ -27,7 +28,12 @@ public interface CartMapper {
 
     Long deleteCartProduct(Long cpNo);
     
-    List<CartProductListDTO> getReservationDetail(Long caNo);
+    List<CartProductListDTO> getCartItemList(Long caNo);
 
     CartDTO getCart(Long caNo);
+
+
+    Long modifyCartItem(Long caNo);
+
+    int checkCart(CartDTO cartDTO);
 }

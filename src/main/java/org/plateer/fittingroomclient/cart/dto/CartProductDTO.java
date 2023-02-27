@@ -12,6 +12,7 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 @NoArgsConstructor
 public class CartProductDTO {
+    private Long roNo; // 장소 번호
 
     private Long cpNo; // 장바구니 상품 번호
 

@@ -6,6 +6,7 @@ import org.plateer.fittingroomclient.cart.dto.CartDTO;
 import org.plateer.fittingroomclient.cart.dto.CartProductDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.annotation.Rollback;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
@@ -68,5 +69,17 @@ class CartMapperTest {
     void deleteCartProduct() {
         long result = cartMapper.deleteCartProduct(14L);
         log.info(result);
+    }
+
+    @Test
+    @Rollback(value = false)
+    void getCartMultiTest() {
+        CartDTO cartDTO = CartDTO.builder().roNo(1L).coNo(18L).build();
+        if ( cartMapper.checkCart(cartDTO.getRoNo(), cartDTO.getCoNo()) == 0 ) {
+            cartMapper.insertCart(cartDTO);
+        }
+
+        CartProductDTO cartProductDTO = CartProductDTO.builder().cpStatus(true).caNo(cartDTO.getCaNo()).spNo(2L).build();
+        cartMapper.insertCartProduct(cartProductDTO);
     }
 }

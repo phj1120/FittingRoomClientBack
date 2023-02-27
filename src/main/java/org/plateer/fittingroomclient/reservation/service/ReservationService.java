@@ -1,23 +1,32 @@
 package org.plateer.fittingroomclient.reservation.service;
 
 import org.plateer.fittingroomclient.cart.dto.CartProductListDTO;
+//import org.plateer.fittingroomclient.payment.dto.AbleReservationDTO;
+import org.plateer.fittingroomclient.reservation.dto.GetReservationItemDTO;
 import org.plateer.fittingroomclient.payment.dto.TimeOfReservation;
 import org.plateer.fittingroomclient.reservation.dto.ReservationDTO;
-import org.plateer.fittingroomclient.reservation.dto.getReservationListDTO;
+import org.plateer.fittingroomclient.reservation.dto.GetReservationListDTO;
+import org.plateer.fittingroomclient.reservation.dto.ReservationNoDTO;
 
 import java.util.List;
 
 public interface ReservationService {
 
 
-    List<getReservationListDTO> getReservationList(Long coNo);
+    List<GetReservationListDTO> getReservationList(Long coNo);
 
-    List<CartProductListDTO> getReservationDetail(Long caNo);
+    GetReservationItemDTO getReservationDetail(Long orNo);
 
-    Long modifyReservationDetail(ReservationDTO reservationDTO);
+    Long modifyReservationDetail(ReservationNoDTO reservationNoDTO);
+
+
+    Long cancleReservationDetail(ReservationNoDTO reservationNoDTO);
+
+  // List<Long> getAbleReservation(AbleReservationDTO ableReservationDTO);
 
     // 예약 가능한 시간대 조회
     List<Long> getAbleTimeOfReservation(TimeOfReservation timeOfReservation);
+
 
 
     Long insertReservation(ReservationDTO reservationDTO);
