@@ -4,8 +4,12 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.plateer.fittingroomclient.cart.dto.CartDTO;
 import org.plateer.fittingroomclient.cart.dto.CartProductDTO;
+import org.plateer.fittingroomclient.cart.dto.CartProductListDTO;
 import org.plateer.fittingroomclient.cart.service.CartService;
 import org.plateer.fittingroomclient.common.dto.ResultDTO;
+import org.plateer.fittingroomclient.common.security.dto.CustomUserDetail;
+import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -28,7 +32,7 @@ public class CartController {
     /**
      * 장바구니 생성
      **/
-//    @PreAuthorize("hasRole('CONSUMER')")
+    @PreAuthorize("hasRole('CONSUMER')")
     @PostMapping("")
     public ResultDTO<Long> insertCart(CartDTO cartDTO) {
         Long result = cartService.insertCart(cartDTO);
@@ -39,11 +43,10 @@ public class CartController {
     /**
      * 장바구니 조회
      **/
-//    @PreAuthorize("hasRole('CONSUMER')")
-    @GetMapping("/{coNo}")
-    public ResultDTO<List<CartDTO>> getCartList(@PathVariable Long coNo) {
-
-        List<CartDTO> result = cartService.getCartList(coNo);
+    @PreAuthorize("hasRole('CONSUMER')")
+    @GetMapping
+    public ResultDTO<List<CartDTO>> getCartList(@AuthenticationPrincipal CustomUserDetail customUserDetail) {
+        List<CartDTO> result = cartService.getCartList(customUserDetail.getUserNo());
 
         return ResultDTO.<List<CartDTO>>builder().data(result).build();
     }
@@ -51,7 +54,7 @@ public class CartController {
     /**
      * 장바구니 삭제
      **/
-//    @PreAuthorize("hasRole('CONSUMER')")
+    @PreAuthorize("hasRole('CONSUMER')")
     @DeleteMapping("/{caNo}")
     public ResultDTO<Long> deleteCart(@PathVariable Long caNo) {
 
@@ -63,7 +66,7 @@ public class CartController {
     /**
      * 장바구니 상품 추가
      **/
-//    @PreAuthorize("hasRole('CONSUMER')")
+    @PreAuthorize("hasRole('CONSUMER')")
     @PostMapping("/product")
     public ResultDTO<Long> insertCartProduct(CartProductDTO cartProductDTO) {
 
@@ -75,7 +78,8 @@ public class CartController {
     /**
      * 장바구니 상품 조회
      **/
-//    @PreAuthorize("hasRole('CONSUMER')")
+
+    @PreAuthorize("hasRole('CONSUMER')")
     @GetMapping("/products/{caNo}")
     public ResultDTO<List<CartProductDTO>> getCartProducts(@PathVariable Long caNo) {
 
@@ -87,7 +91,7 @@ public class CartController {
     /**
      * 장바구니 상품 삭제
      **/
-//    @PreAuthorize("hasRole('CONSUMER')")
+    @PreAuthorize("hasRole('CONSUMER')")
     @DeleteMapping("/product/{cpNo}")
     public ResultDTO<Long> deleteCartProduct(@PathVariable Long cpNo) {
 
@@ -95,4 +99,12 @@ public class CartController {
 
         return ResultDTO.<Long>builder().data(result).build();
     }
+    @PreAuthorize("hasRole('CONSUMER')")
+    @GetMapping("/detail/{id}")
+    public List<CartProductListDTO> getCartItemList(@PathVariable("id") Long caNo) {
+
+
+        return cartService.getCartItemList(caNo);
+    }
+
 }

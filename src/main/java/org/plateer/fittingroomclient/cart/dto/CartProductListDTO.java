@@ -15,6 +15,7 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 public class CartProductListDTO {
 
+    private Long cpNo;
     private Boolean cpStatus;
 
     @JsonFormat(pattern = "yyyy-MM-dd")

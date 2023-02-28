@@ -16,12 +16,6 @@ import java.util.List;
 public class OrderServiceImpl implements OrderService {
 
     private final OrderMapper orderMapper;
-
-    @Override
-    public Long insertModifyReservation(Long reNo) {
-        return orderMapper.insertModifyReservation(reNo);
-    }
-
     @Override
     public Long insertOrder(OrderDTO orderDTO) {
         Long count = orderMapper.insertOrder(orderDTO);
@@ -38,4 +32,5 @@ public class OrderServiceImpl implements OrderService {
 
         return orderDTOs;
     }
+
 }
