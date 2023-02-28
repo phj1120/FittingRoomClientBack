@@ -25,6 +25,8 @@ public class GetReservationItemDTO {
 
     private Long reNo;
 
+    private Long roNo;
+
     private String roName;
 
     private String roAddress;
