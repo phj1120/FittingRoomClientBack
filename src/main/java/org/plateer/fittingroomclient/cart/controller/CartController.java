@@ -77,6 +77,7 @@ public class CartController {
     /**
      * 장바구니 상품 조회
      **/
+
     @PreAuthorize("hasRole('CONSUMER')")
     @GetMapping("/products/{caNo}")
     public ResultDTO<List<CartProductDTO>> getCartProducts(@PathVariable Long caNo) {
@@ -97,7 +98,7 @@ public class CartController {
 
         return ResultDTO.<Long>builder().data(result).build();
     }
-
+    @PreAuthorize("hasRole('CONSUMER')")
     @GetMapping("/detail/{id}")
     public List<CartProductListDTO> getCartItemList(@PathVariable("id") Long caNo) {
         return cartService.getCartItemList(caNo);
