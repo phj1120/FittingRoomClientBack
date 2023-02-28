@@ -1,4 +1,4 @@
-package org.plateer.fittingroomclient.inquiry.mapper;
+package org.plateer.fittingroomclient.oauth.kakao.mapper;
 
 import lombok.extern.log4j.Log4j2;
 import org.junit.jupiter.api.Test;
@@ -6,6 +6,7 @@ import org.plateer.fittingroomclient.common.dto.PageRequestDTO;
 import org.plateer.fittingroomclient.inquiry.dto.InquiryDTO;
 import org.plateer.fittingroomclient.inquiry.dto.enums.InquiryStatus;
 import org.plateer.fittingroomclient.inquiry.dto.enums.InquiryType;
+import org.plateer.fittingroomclient.inquiry.mapper.InquiryMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.transaction.annotation.Transactional;
