@@ -22,9 +22,12 @@ public interface ReservationMapper {
 
     Long modifyReservation(ReservationNoDTO reservationNoDTO);
 
+    Long modifyDate(ReservationDTO reservationDTO);
+
     Long cancleReservation(ReservationNoDTO reservationNoDTO);
 
     List<ReservationDTO> getExistReservation(TimeOfReservation timeOfReservation);
 
     Long insertReservation(ReservationDTO reservationDTO);
+
 }

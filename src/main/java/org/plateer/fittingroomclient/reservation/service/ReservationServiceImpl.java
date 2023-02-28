@@ -51,6 +51,11 @@ public class ReservationServiceImpl implements ReservationService {
     }
 
     @Override
+    public Long modifyDate(ReservationDTO reservationDTO) {
+        return reservationMapper.modifyDate(reservationDTO);
+    }
+
+    @Override
     public Long cancleReservationDetail(ReservationNoDTO reservationNoDTO) {
         orderMapper.insertCancleReservation(reservationNoDTO);
         cartMapper.modifyCartItem(reservationNoDTO.getCaNo());

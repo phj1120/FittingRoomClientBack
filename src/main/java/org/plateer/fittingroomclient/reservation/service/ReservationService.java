@@ -19,6 +19,8 @@ public interface ReservationService {
 
     Long modifyReservationDetail(ReservationNoDTO reservationNoDTO);
 
+    Long modifyDate(ReservationDTO reservationDTO);
+
 
     Long cancleReservationDetail(ReservationNoDTO reservationNoDTO);
 

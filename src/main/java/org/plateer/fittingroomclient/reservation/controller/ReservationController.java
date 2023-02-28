@@ -46,4 +46,11 @@ public class ReservationController {
 
         return reservationService.cancleReservationDetail(reservationNoDTO);
     }
+
+    @PreAuthorize("hasRole('CONSUMER')")
+    @PutMapping("detail/modifydate")
+    public Long modifyDate(@RequestBody ReservationDTO reservationDTO){
+        Long da = reservationService.modifyDate(reservationDTO);
+        return da ;
+    }
 }

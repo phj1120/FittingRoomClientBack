@@ -37,7 +37,7 @@
     </select>
 
     <select id="getReservationDetail" resultType="GetReservationItemDTO">
-        SELECT a.or_status, a.ca_no, b.re_dt,b.re_time, b.re_price ,b.re_no , d.ro_name, d.ro_address, d.ro_detail_address
+        SELECT a.or_status, a.ca_no, b.re_dt,b.re_time, b.re_price ,b.re_no ,d.ro_no, d.ro_name, d.ro_address, d.ro_detail_address
         FROM tbl_order a, tbl_reservation b , tbl_cart c, tbl_room d
         WHERE a.or_no = #{orNo}
         AND a.or_no = b.or_no
@@ -52,6 +52,17 @@
             re_status = '결제완료',
             re_modify_dt = now(),
             or_no = #{orNo}
+        </set>
+        where re_no = #{reNo}
+    </update>
+
+    <update id="modifyDate">
+        update
+        tbl_reservation
+        <set>
+            re_dt = #{reDt},
+            re_modify_dt = now(),
+            re_time = #{reTime}
         </set>
         where re_no = #{reNo}
     </update>
