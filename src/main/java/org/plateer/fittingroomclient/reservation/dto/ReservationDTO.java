@@ -23,7 +23,7 @@ public class ReservationDTO {
     private LocalDateTime reCreatDt;
 
     @DateTimeFormat(pattern = "yyyy-MM-dd'T'HH:mm:ss")
-    private LocalDateTime reDt;
+    private LocalDate reDt;
     //2021-12-22 09:00:00 ~ 2021-12-22 10:00:00
 
     private Long reTime;
@@ -36,7 +36,7 @@ public class ReservationDTO {
 
 
     public ReservationDTO(LocalDate reDt, Long reTime, Long rePrice, String reStatus, Long orNo) {
-        this.reDt = reDt.atStartOfDay();
+        this.reDt = LocalDate.from(reDt.atStartOfDay());
         this.reTime = reTime;
         this.rePrice = rePrice;
         this.reStatus = reStatus;
