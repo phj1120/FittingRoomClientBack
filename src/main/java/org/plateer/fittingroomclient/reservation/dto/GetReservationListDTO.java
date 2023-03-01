@@ -33,7 +33,7 @@ public class GetReservationListDTO {
 
     private String roDetailAddress;
 
-    private String rfName;
+    private String rfUuid;
 
 
 }

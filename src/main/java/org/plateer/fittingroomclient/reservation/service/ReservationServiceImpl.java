@@ -43,10 +43,7 @@ public class ReservationServiceImpl implements ReservationService {
     @Override
     public Long modifyReservationDetail(ReservationNoDTO reservationNoDTO) {
         orderMapper.insertModifyReservation(reservationNoDTO);
-        log.info("=====================================");
-        log.info("=====================================");
 
-        log.info(reservationNoDTO.getOrNo());
         return reservationMapper.modifyReservation(reservationNoDTO);
     }
 
