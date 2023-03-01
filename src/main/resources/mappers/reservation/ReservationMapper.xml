@@ -12,9 +12,18 @@
     </insert>
 
     <select id="getReservationList" resultType="GetReservationListDTO">
-        SELECT B.or_no, B.or_status, B.ca_no,
-        B.ro_no, c.re_no, c.re_dt, c.re_price, d.ro_name, d.ro_address, d.ro_detail_address
-        ,e.rf_name
+        SELECT
+            B.or_no,
+            B.or_status,
+            B.ca_no,
+            B.ro_no,
+            c.re_no,
+            c.re_dt,
+            c.re_price,
+            d.ro_name,
+            d.ro_address,
+            d.ro_detail_address,
+            e.rf_uuid
         FROM
         (
         SELECT * FROM(
@@ -37,12 +46,25 @@
     </select>
 
     <select id="getReservationDetail" resultType="GetReservationItemDTO">
-        SELECT a.or_status, a.ca_no, b.re_dt,b.re_time, b.re_price ,b.re_no ,d.ro_no, d.ro_name, d.ro_address, d.ro_detail_address
-        FROM tbl_order a, tbl_reservation b , tbl_cart c, tbl_room d
-        WHERE a.or_no = #{orNo}
-        AND a.or_no = b.or_no
-        AND a.ca_no = c.ca_no
-        AND c.ro_no = d.ro_no
+        SELECT
+            a.or_status,
+            a.ca_no,
+            b.re_dt,
+            b.re_time,
+            b.re_price,
+            b.re_no,
+            d.ro_no,
+            d.ro_name,
+            d.ro_address,
+            d.ro_detail_address,
+            ( SELECT rf_uuid FROM tbl_place_file S1 WHERE S1.ro_no = d.ro_no ) rf_uuid
+        FROM
+            tbl_order a
+            LEFT JOIN tbl_reservation b ON a.or_no = b.or_no
+            LEFT JOIN tbl_cart c ON a.ca_no = c.ca_no
+            LEFT JOIN tbl_room d ON c.ro_no = d.ro_no
+        WHERE
+            a.or_no = #{orNo}
     </select>
 
     <update id="modifyReservation">
