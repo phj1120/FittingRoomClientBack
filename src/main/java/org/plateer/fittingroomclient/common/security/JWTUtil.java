@@ -77,8 +77,8 @@ public class JWTUtil {
     }
 
     public TokensDTO generateTokens(String username) {
-        String access = generateToken(Map.of("memberId", username), 2);
-        String refresh = generateToken(Map.of("memberId", username), 30);
+        String access = generateToken(Map.of("memberId", username), 200);
+        String refresh = generateToken(Map.of("memberId", username), 300);
 
         return new TokensDTO(access, refresh);
     }
